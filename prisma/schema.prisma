@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Form {
+  id          Int      @id @default(autoincrement())
+  formId      String   @unique @default(uuid()) @map("form_id")
+  userId      String   @map("user_id")
+  name        String
+  description String   @default("")
+  jsonBlocks  String   @default("[]") @map("json_blocks")
+  views       Int      @default(0)
+  responses   Int      @default(0)
+  published   Boolean  @default(false)
+  creatorName String   @map("creator_name")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @default(now()) @updatedAt @map("updated_at")
+
+  settings      FormSettings?   @relation(fields: [settingsId], references: [id])
+  settingsId    Int?            @map("settings_id")
+  formResponses FormResponses[]
+
+  @@map("forms")
+}
+
+model FormSettings {
+  id              Int      @id @default(autoincrement())
+  primaryColor    String   @map("primary_color")
+  backgroundColor String   @map("background_color")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @default(now()) @updatedAt @map("updated_at")
+  forms           Form[]
+
+  @@map("form_settings")
+}
+
+model FormResponses {
+  id           Int      @id @default(autoincrement())
+  jsonResponse String   @map("json_response")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @default(now()) @updatedAt @map("updated_at")
+
+  formId Int  @map("form_id")
+  form   Form @relation(fields: [formId], references: [id])
+
+  @@map("form_responses")
+}
