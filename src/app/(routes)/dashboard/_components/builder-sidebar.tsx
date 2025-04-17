@@ -15,11 +15,14 @@ import { FileTextIcon, Home } from 'lucide-react'
 import { useState, type ComponentProps } from 'react'
 import { FormBlockBox } from './form-block-box'
 import { FormSettings } from './form-settings'
+import { useBuilder } from '@/context/builder-provider'
+import { Skeleton } from '@/components/ui/skeleton'
 
 type BuilderSidebarProps = ComponentProps<typeof Sidebar>
 
 export function BuilderSidebar({ ...rest }: BuilderSidebarProps) {
   const [tab, setTab] = useState<'blocks' | 'settings'>('blocks')
+  const { formData, loading } = useBuilder()
 
   return (
     <Sidebar className="border-r left-12 pt-16" {...rest}>
@@ -37,9 +40,13 @@ export function BuilderSidebar({ ...rest }: BuilderSidebarProps) {
                 <BreadcrumbItem>
                   <BreadcrumbPage className="flex items-center gap-1">
                     <FileTextIcon className="size-4 mb-[3px]" />
-                    <h5 className="truncate flex w-[110px] text-sm">
-                      Untitled Form
-                    </h5>
+                    {loading ? (
+                      <Skeleton className="w-[110px] h-4" />
+                    ) : (
+                      <h5 className="truncate flex w-[110px] text-sm">
+                        {formData?.name || 'Untitled'}
+                      </h5>
+                    )}
                   </BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
@@ -47,6 +54,7 @@ export function BuilderSidebar({ ...rest }: BuilderSidebarProps) {
           </div>
         </header>
       </SidebarHeader>
+
       <SidebarContent className="pt-2 px-5 bg-white">
         <div className="w-full">
           <div className="w-full rounded-full bg-gray-100 p-1 flex flex-row gap-1 h-[39px]">

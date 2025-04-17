@@ -2,6 +2,7 @@ import { SidebarInset, SidebarTrigger } from '@/components/ui/sidebar'
 import { BuilderSidebar } from './builder-sidebar'
 import { defaultBackgroundColor } from '@/constants'
 import { BuilderCanvas } from './builder-canvas'
+import { BuilderBlockProperties } from './builder-block-properties'
 
 type BuilderProps = {
   isSidebarOpen: boolean
@@ -17,6 +18,7 @@ export function Builder({ isSidebarOpen }: BuilderProps) {
           <BuilderCanvas />
         </div>
       </SidebarInset>
+      <BuilderBlockProperties />
     </>
   )
 }
