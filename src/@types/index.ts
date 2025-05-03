@@ -6,7 +6,7 @@ export type FormWithSettings = Form & { settings: FormSettings }
 export type PositionLayout = 'above' | 'below'
 
 export type FormCategoriesType = 'Layout' | 'Field'
-export type BlockType = 'RowLayout'
+export type BlockType = 'RowLayout' | 'RadioSelect'
 export type FormBlockType = {
   blockCategory: FormCategoriesType
   blockType: BlockType

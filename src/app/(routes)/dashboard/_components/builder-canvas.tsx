@@ -177,34 +177,36 @@ function CanvasBlockLayoutWrapper({
   })
 
   const showTopCorner =
-    topCorner.isOver &&
     !blockLayout.isLocked &&
     allBlockLayouts.includes(activeBlock?.data?.current?.blockType)
 
   const showBottomCorner =
-    bottomCorner.isOver &&
     !blockLayout.isLocked &&
     allBlockLayouts.includes(activeBlock?.data?.current?.blockType)
 
   return (
     <div className="relative mb-1">
-      <div
-        ref={topCorner.setNodeRef}
-        className="absolute top-0 w-full h-1/2 rounded-t-md pointer-events-none"
-      >
-        {showTopCorner && (
-          <div className="absolute w-full -top-[3px] h-1.5 bg-primary rounded-t-md" />
-        )}
-      </div>
+      {showTopCorner && (
+        <div
+          ref={topCorner.setNodeRef}
+          className="absolute top-0 w-full h-1/2 rounded-t-md pointer-events-none"
+        >
+          {topCorner.isOver && (
+            <div className="absolute w-full -top-[3px] h-1.5 bg-primary rounded-t-md" />
+          )}
+        </div>
+      )}
 
-      <div
-        ref={bottomCorner.setNodeRef}
-        className="absolute bottom-0 w-full h-1/2 rounded-b-md pointer-events-none"
-      >
-        {showBottomCorner && (
-          <div className="absolute w-full -bottom-[3px] h-1.5 bg-primary rounded-b-md" />
-        )}
-      </div>
+      {showBottomCorner && (
+        <div
+          ref={bottomCorner.setNodeRef}
+          className="absolute bottom-0 w-full h-1/2 rounded-b-md pointer-events-none"
+        >
+          {bottomCorner.isOver && (
+            <div className="absolute w-full -bottom-[3px] h-1.5 bg-primary rounded-b-md" />
+          )}
+        </div>
+      )}
 
       <CanvasBlockLayout blockInstance={blockLayout} />
     </div>
