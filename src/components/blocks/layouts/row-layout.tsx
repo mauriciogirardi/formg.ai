@@ -28,6 +28,7 @@ import { allBlockLayouts } from '@/constants'
 import { ChildCanvasComponentWrapper } from '@/components/child-canvas-component-wrapper'
 import { FormBlocks } from '@/lib/form-blocks'
 import { generateUniqueId } from '@/lib/helpers'
+import { ChildPropertiesComponentWrapper } from '@/components/child-properties-component-wrapper'
 
 const blockType: BlockType = 'RowLayout'
 const blockCategory: FormCategoriesType = 'Layout'
@@ -247,10 +248,31 @@ function RowLayoutFormComponent() {
   )
 }
 
-function RowLayoutPropertiesComponent() {
+type RowLayoutPropertiesComponentProps = {
+  blockInstance: FormBlockInstance
+}
+
+function RowLayoutPropertiesComponent({
+  blockInstance,
+}: RowLayoutPropertiesComponentProps) {
+  const childBlocks = blockInstance.childBlocks || []
+
   return (
-    <div>
-      <p>Properties Comp</p>
+    <div className="pt-4 w-full">
+      <div className="flex w-full flex-col justify-start ">
+        {childBlocks.map((block, index) => (
+          <div
+            key={block.id}
+            className="flex items-center justify-center gap-1 h-auto"
+          >
+            <ChildPropertiesComponentWrapper
+              index={index + 1}
+              parentId={blockInstance.id}
+              blockInstance={block}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   )
 }

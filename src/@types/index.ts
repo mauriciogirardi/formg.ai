@@ -17,7 +17,11 @@ export type FormBlockType = {
   }
   canvasComponent: FC<{ blockInstance: FormBlockInstance }>
   formComponent: FC
-  propertiesComponent: FC
+  propertiesComponent: FC<{
+    blockInstance: FormBlockInstance
+    positionIndex?: number
+    parentId?: string
+  }>
 }
 
 export type FormBlockInstance = {
