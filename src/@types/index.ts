@@ -16,7 +16,7 @@ export type FormBlockType = {
     label: string
   }
   canvasComponent: FC<{ blockInstance: FormBlockInstance }>
-  formComponent: FC
+  formComponent: FC<{ blockInstance: FormBlockInstance }>
   propertiesComponent: FC<{
     blockInstance: FormBlockInstance
     positionIndex?: number

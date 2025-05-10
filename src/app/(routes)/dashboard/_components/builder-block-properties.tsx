@@ -3,7 +3,8 @@
 import { Button } from '@/components/ui/button'
 import { useBuilder } from '@/context/builder-provider'
 import { FormBlocks } from '@/lib/form-blocks'
-import { EyeIcon, MousePointerClick, SaveIcon, SendIcon } from 'lucide-react'
+import { MousePointerClick, SaveIcon, SendIcon } from 'lucide-react'
+import { PreviewDialog } from './preview-dialog'
 
 export function BuilderBlockProperties() {
   const { selectedBlockLayout } = useBuilder()
@@ -17,14 +18,7 @@ export function BuilderBlockProperties() {
       <div className="fixed right-0 w-[320px] bg-white border-l shadow-sm h-screen pb-36 mt-0 scrollbar overflow-auto">
         <div className="flex flex-col w-full items-center h-auto min-h-full">
           <div className="w-full flex items-center bg-white pb-2 pt-3 sticky border-b border-gray-200 top-0 gap-2 px-2">
-            <Button
-              size="sm"
-              variant="outline"
-              className="text-primary border-primary hover:bg-primary hover:text-white"
-            >
-              <EyeIcon />
-              Preview
-            </Button>
+            <PreviewDialog />
             <Button
               size="sm"
               variant="outline"
