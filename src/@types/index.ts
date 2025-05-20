@@ -6,7 +6,11 @@ export type FormWithSettings = Form & { settings: FormSettings }
 export type PositionLayout = 'above' | 'below'
 
 export type FormCategoriesType = 'Layout' | 'Field'
-export type BlockType = 'RowLayout' | 'RadioSelect'
+export type BlockType = 'RowLayout' | 'RadioSelect' | 'TextField'
+// | 'TextArea'
+// | 'StarRating'
+// | 'Heading'
+// | 'Paragraph'
 export type FormBlockType = {
   blockCategory: FormCategoriesType
   blockType: BlockType
@@ -16,7 +20,12 @@ export type FormBlockType = {
     label: string
   }
   canvasComponent: FC<{ blockInstance: FormBlockInstance }>
-  formComponent: FC<{ blockInstance: FormBlockInstance }>
+  formComponent: FC<{
+    blockInstance: FormBlockInstance
+    onBlur?: HandleBlurFunc
+    isError?: boolean
+    errorMessage?: string
+  }>
   propertiesComponent: FC<{
     blockInstance: FormBlockInstance
     positionIndex?: number
@@ -35,4 +44,10 @@ export type FormBlockInstance = {
 
 export type FormBlocksType = {
   [key in BlockType]: FormBlockType
+}
+
+export type HandleBlurFunc = (key: string, value: string) => void
+
+export type FormErrorsType = {
+  [key: string]: string
 }

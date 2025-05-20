@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { ChevronDown, CircleIcon, Plus, X } from 'lucide-react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
@@ -9,6 +9,8 @@ import type {
   FormBlockInstance,
   FormBlockType,
   FormCategoriesType,
+  FormErrorsType,
+  HandleBlurFunc,
 } from '@/@types'
 import { useBuilder } from '@/context/builder-provider'
 
@@ -25,6 +27,8 @@ import {
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
 import { Switch } from '../ui/switch'
+import { generateUniqueId } from '@/lib/helpers'
+import { cn } from '@/lib/utils'
 
 const blockType: BlockType = 'RadioSelect'
 const blockCategory: FormCategoriesType = 'Field'
@@ -68,13 +72,13 @@ function RadioSelectCanvasComponent({
 
   return (
     <div className="flex flex-col gap-3 w-full">
-      <Label className="text-base font-normal mb-2">
+      <Label className="text-base font-normal">
         {label}
         {required && <span className="text-red-500">*</span>}
 
         <RadioGroup
           disabled
-          className="space-y-2 mt-3 disabled:cursor-default pointer-events-none cursor-default"
+          className="space-y-2 mt-2 disabled:cursor-default pointer-events-none cursor-default"
         >
           {options.map(option => (
             <div key={option} className="flex items-center gap-2">
@@ -192,10 +196,10 @@ function RadioSelectPropertiesComponent({
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormLabel className="text-sm font-normal">Options</FormLabel>
-
                 <div className="flex flex-col gap-1">
                   {field.value.map((option, index) => (
                     <div
+                      // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
                       key={index}
                       className="relative flex items-center justify-between gap-2"
                     >
@@ -291,10 +295,69 @@ function RadioSelectPropertiesComponent({
   )
 }
 
-function RadioSelectFormComponent() {
+type RadioSelectFormComponentProps = {
+  blockInstance: FormBlockInstance
+}
+
+function RadioSelectFormComponent({
+  blockInstance,
+}: RadioSelectFormComponentProps) {
+  const { label, options, required } =
+    blockInstance.attributes as AttributesType
+
+  const [isError, setIsError] = useState(false)
+  const [value, setValue] = useState('')
+
+  const handleValidateField = (text: string) => {
+    if (required) {
+      return text.trim().length > 0
+    }
+
+    return true
+  }
+
   return (
-    <div>
-      <p>Radio Form</p>
+    <div className="flex flex-col gap-3 w-full">
+      <Label
+        className={cn('text-base font-normal mb-2', isError && 'text-rose-500')}
+      >
+        {label}
+        {required && <span className="text-red-500">*</span>}
+
+        <RadioGroup
+          className="space-y-2 mt-3"
+          onValueChange={value => {
+            setValue(value)
+            const isValid = handleValidateField(value)
+            setIsError(isValid)
+          }}
+        >
+          {options.map(option => {
+            const uniqueId = `option-${generateUniqueId()}`
+            return (
+              <div key={option} className="flex items-center gap-2 w-max">
+                <RadioGroupItem
+                  value={option}
+                  id={uniqueId}
+                  className={cn('cursor-pointer', isError && 'text-rose-500')}
+                />
+                <Label
+                  htmlFor={uniqueId}
+                  className="font-normal cursor-pointer"
+                >
+                  {option}
+                </Label>
+              </div>
+            )
+          })}
+        </RadioGroup>
+
+        {isError && (
+          <p className="text-rose-500 text-xs">
+            {required && value.trim().length === 0 && 'This field is required.'}
+          </p>
+        )}
+      </Label>
     </div>
   )
 }

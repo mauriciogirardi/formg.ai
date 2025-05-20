@@ -12,6 +12,8 @@ import type {
   FormBlockInstance,
   FormBlockType,
   FormCategoriesType,
+  FormErrorsType,
+  HandleBlurFunc,
 } from '@/@types'
 
 import { Button } from '@/components/ui/button'
@@ -29,6 +31,7 @@ import { ChildCanvasComponentWrapper } from '@/components/child-canvas-component
 import { FormBlocks } from '@/lib/form-blocks'
 import { generateUniqueId } from '@/lib/helpers'
 import { ChildPropertiesComponentWrapper } from '@/components/child-properties-component-wrapper'
+import { ChildFormComponentWrapper } from '@/components/child-form-component-wrapper'
 
 const blockType: BlockType = 'RowLayout'
 const blockCategory: FormCategoriesType = 'Layout'
@@ -240,10 +243,48 @@ function RowLayoutCanvasComponent({
   )
 }
 
-function RowLayoutFormComponent() {
+type RowLayoutFormComponentProps = {
+  blockInstance: FormBlockInstance
+  onBlur?: HandleBlurFunc
+  formErrors?: FormErrorsType
+}
+
+function RowLayoutFormComponent({
+  blockInstance,
+  formErrors,
+  onBlur,
+}: RowLayoutFormComponentProps) {
+  const childBlocks = blockInstance.childBlocks || []
+
   return (
-    <div>
-      <p>Form Comp</p>
+    <div className="max-w-full">
+      {blockInstance.isLocked && <Border />}
+      <Card
+        className={cn(
+          'w-full bg-white relative border shadow-sm min-h-[120px] max-w-[768px] rounded-md p-0',
+          blockInstance.isLocked && 'rounded-t-none'
+        )}
+      >
+        <CardContent className="px-2 pb-2">
+          <div className="flex flex-wrap gap-2">
+            <div className="flex w-full flex-col items-center justify-center gap-4 py-4 px-3">
+              {childBlocks.map(child => (
+                <div
+                  key={child.id}
+                  className="flex items-center justify-center gap-1 h-auto w-full"
+                >
+                  <ChildFormComponentWrapper
+                    blockInstance={child}
+                    onBlur={onBlur}
+                    isError={!!formErrors?.[child.id]}
+                    errorMessage={formErrors?.[child.id]}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   )
 }
