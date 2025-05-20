@@ -6,11 +6,15 @@ export type FormWithSettings = Form & { settings: FormSettings }
 export type PositionLayout = 'above' | 'below'
 
 export type FormCategoriesType = 'Layout' | 'Field'
-export type BlockType = 'RowLayout' | 'RadioSelect' | 'TextField'
-// | 'TextArea'
-// | 'StarRating'
+export type BlockType =
+  | 'RowLayout'
+  | 'RadioSelect'
+  | 'TextField'
+  | 'TextArea'
+  | 'StarRating'
 // | 'Heading'
 // | 'Paragraph'
+
 export type FormBlockType = {
   blockCategory: FormCategoriesType
   blockType: BlockType

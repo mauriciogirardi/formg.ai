@@ -34,7 +34,7 @@ export function PreviewDialog() {
           <DialogTitle>Preview Mode</DialogTitle>
         </DialogHeader>
         <div
-          className="w-full h-full overflow-y-auto scrollbar transition-all duration-300"
+          className="w-full h-[600px] 2xl:h-[800px] overflow-y-auto scrollbar transition-all duration-300"
           style={{ background: defaultBackgroundColor }}
         >
           <div className="w-full h-full max-w-[650px] mx-auto">
