@@ -28,6 +28,7 @@ import type {
 import { fontSizeClass, fontWeightClass } from '@/constants'
 import { Input } from '../ui/input'
 import { useBuilder } from '@/context/builder-provider'
+import { cn } from '@/lib/utils'
 
 const blockCategory: FormCategoriesType = 'Field'
 const blockType: BlockType = 'Heading'
@@ -95,8 +96,9 @@ function HeadingCanvasFormComponent({
   const { level, label, fontSize, fontWeight } = block.attributes
   return (
     <div
-      className={`w-full text-left
-         ${fontSizeClass[fontSize]} ${fontWeightClass[fontWeight]}`}
+      className={cn(
+        `w-full text-left ${fontSizeClass[fontSize]} ${fontWeightClass[fontWeight]}`
+      )}
     >
       {React.createElement(
         `h${level}`, // Dynamically create heading tag based on 'level'
@@ -161,38 +163,29 @@ function HeadingPropertiesComponent({
         <span className="text-sm font-medium text-gray-600 tracking-wider">
           Heading {positionIndex}
         </span>
-        <ChevronDown className="w-4 h-4" />
+        <ChevronDown className="size-4" />
       </div>
       <Form {...form}>
-        <form
-          onSubmit={e => e.preventDefault()}
-          className="w-full space-y-3 px-4"
-        >
+        <form onSubmit={e => e.preventDefault()} className="w-full space-y-3">
           {/* Label */}
           <FormField
             control={form.control}
             name="label"
             render={({ field }) => (
               <FormItem>
-                <div className="flex items-baseline justify-between w-full gap-2">
-                  <FormLabel className="text-[13px] font-normal">
-                    Label
-                  </FormLabel>
-                  <div className="w-full max-w-[187px]">
-                    <FormControl>
-                      <Input
-                        {...field}
-                        onChange={e => {
-                          field.onChange(e)
-                          setChanges({
-                            ...form.getValues(),
-                            label: e.target.value,
-                          })
-                        }}
-                      />
-                    </FormControl>
-                  </div>
-                </div>
+                <FormLabel className="text-sm font-normal">Label</FormLabel>
+                <FormControl>
+                  <Input
+                    {...field}
+                    onChange={e => {
+                      field.onChange(e)
+                      setChanges({
+                        ...form.getValues(),
+                        label: e.target.value,
+                      })
+                    }}
+                  />
+                </FormControl>
                 <FormMessage />
               </FormItem>
             )}
@@ -204,40 +197,31 @@ function HeadingPropertiesComponent({
             name="fontSize"
             render={({ field }) => (
               <FormItem>
-                <div
-                  className="flex items-baseline justify-between 
-                w-full gap-2"
-                >
-                  <FormLabel className="text-[13px] font-normal">
-                    Font Size
-                  </FormLabel>
-                  <div className="w-full max-w-[187px]">
-                    <FormControl>
-                      <Select
-                        {...field}
-                        onValueChange={(value: fontSizeType) => {
-                          field.onChange(value)
-                          setChanges({
-                            ...form.getValues(),
-                            fontSize: value,
-                          })
-                        }}
-                      >
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select Font Size" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="small">Small</SelectItem>
-                          <SelectItem value="medium">Medium</SelectItem>
-                          <SelectItem value="large">Large</SelectItem>
-                          <SelectItem value="x-large">Xtra Large</SelectItem>
-                          <SelectItem value="2x-large">2Xtra Large</SelectItem>
-                          <SelectItem value="4x-large">4Xtra Large</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </FormControl>
-                  </div>
-                </div>
+                <FormLabel className="text-sm font-normal">Font Size</FormLabel>
+                <FormControl>
+                  <Select
+                    {...field}
+                    onValueChange={(value: fontSizeType) => {
+                      field.onChange(value)
+                      setChanges({
+                        ...form.getValues(),
+                        fontSize: value,
+                      })
+                    }}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select Font Size" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="small">Small</SelectItem>
+                      <SelectItem value="medium">Medium</SelectItem>
+                      <SelectItem value="large">Large</SelectItem>
+                      <SelectItem value="x-large">Xtra Large</SelectItem>
+                      <SelectItem value="2x-large">2Xtra Large</SelectItem>
+                      <SelectItem value="4x-large">4Xtra Large</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </FormControl>
                 <FormMessage />
               </FormItem>
             )}
@@ -249,35 +233,29 @@ function HeadingPropertiesComponent({
             name="fontWeight"
             render={({ field }) => (
               <FormItem>
-                <div className="flex items-baseline justify-between w-full gap-2">
-                  <FormLabel className="text-[13px] font-normal">
-                    Weight
-                  </FormLabel>
-                  <div className="w-full max-w-[187px]">
-                    <FormControl>
-                      <Select
-                        {...field}
-                        onValueChange={(value: fontWeightType) => {
-                          field.onChange(value)
-                          setChanges({
-                            ...form.getValues(),
-                            fontWeight: value,
-                          })
-                        }}
-                      >
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select Font Weight" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="normal">Normal</SelectItem>
-                          <SelectItem value="bold">Bold</SelectItem>
-                          <SelectItem value="bolder">Bolder</SelectItem>
-                          <SelectItem value="lighter">Lighter</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </FormControl>
-                  </div>
-                </div>
+                <FormLabel className="text-sm font-normal">Weight</FormLabel>
+                <FormControl>
+                  <Select
+                    {...field}
+                    onValueChange={(value: fontWeightType) => {
+                      field.onChange(value)
+                      setChanges({
+                        ...form.getValues(),
+                        fontWeight: value,
+                      })
+                    }}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select Font Weight" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="normal">Normal</SelectItem>
+                      <SelectItem value="bold">Bold</SelectItem>
+                      <SelectItem value="bolder">Bolder</SelectItem>
+                      <SelectItem value="lighter">Lighter</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </FormControl>
                 <FormMessage />
               </FormItem>
             )}
@@ -289,36 +267,30 @@ function HeadingPropertiesComponent({
             name="level"
             render={({ field }) => (
               <FormItem>
-                <div className="flex items-baseline justify-between w-full gap-2">
-                  <FormLabel className="text-[13px] font-normal">
-                    Level
-                  </FormLabel>
-                  <div className="w-full max-w-[187px]">
-                    <FormControl>
-                      <Select
-                        onValueChange={value => {
-                          field.onChange(value)
-                          setChanges({
-                            ...form.getValues(),
-                            level: Number(value),
-                          })
-                        }}
-                      >
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select Heading Level" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="1">H1</SelectItem>
-                          <SelectItem value="2">H2</SelectItem>
-                          <SelectItem value="3">H3</SelectItem>
-                          <SelectItem value="4">H4</SelectItem>
-                          <SelectItem value="5">H5</SelectItem>
-                          <SelectItem value="6">H6</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </FormControl>
-                  </div>
-                </div>
+                <FormLabel className="text-sm font-normal">Level</FormLabel>
+                <FormControl>
+                  <Select
+                    onValueChange={value => {
+                      field.onChange(value)
+                      setChanges({
+                        ...form.getValues(),
+                        level: Number(value),
+                      })
+                    }}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select Heading Level" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="1">H1</SelectItem>
+                      <SelectItem value="2">H2</SelectItem>
+                      <SelectItem value="3">H3</SelectItem>
+                      <SelectItem value="4">H4</SelectItem>
+                      <SelectItem value="5">H5</SelectItem>
+                      <SelectItem value="6">H6</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </FormControl>
                 <FormMessage />
               </FormItem>
             )}

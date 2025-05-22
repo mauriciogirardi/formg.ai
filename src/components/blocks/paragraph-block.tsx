@@ -151,28 +151,22 @@ function ParagraphPropertiesComponent({
             name="text"
             render={({ field }) => (
               <FormItem>
-                <div className="flex items-baseline justify-between w-full gap-2">
-                  <FormLabel className="text-[13px] font-normal">
-                    Content
-                  </FormLabel>
-                  <div className="w-full max-w-[400px]">
-                    <FormControl>
-                      <Textarea
-                        {...field}
-                        className="scrollbar"
-                        onChange={e => {
-                          field.onChange(e)
-                          setChanges({
-                            ...form.getValues(),
-                            text: e.target.value,
-                          })
-                        }}
-                        rows={4}
-                        placeholder="Enter your paragraph text here"
-                      />
-                    </FormControl>
-                  </div>
-                </div>
+                <FormLabel className="text-sm font-normal">Content</FormLabel>
+                <FormControl>
+                  <Textarea
+                    {...field}
+                    className="scrollbar"
+                    onChange={e => {
+                      field.onChange(e)
+                      setChanges({
+                        ...form.getValues(),
+                        text: e.target.value,
+                      })
+                    }}
+                    rows={4}
+                    placeholder="Enter your paragraph text here"
+                  />
+                </FormControl>
                 <FormMessage />
               </FormItem>
             )}
@@ -184,34 +178,28 @@ function ParagraphPropertiesComponent({
             name="fontSize"
             render={({ field }) => (
               <FormItem>
-                <div className="flex items-baseline justify-between w-full gap-2">
-                  <FormLabel className="text-[13px] font-normal">
-                    Font Size
-                  </FormLabel>
-                  <div className="w-full max-w-[187px]">
-                    <FormControl>
-                      <Select
-                        {...field}
-                        onValueChange={(value: fontSizeType) => {
-                          field.onChange(value)
-                          setChanges({
-                            ...form.getValues(),
-                            fontSize: value,
-                          })
-                        }}
-                      >
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select Font Size" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="small">Small</SelectItem>
-                          <SelectItem value="medium">Medium</SelectItem>
-                          <SelectItem value="large">Large</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </FormControl>
-                  </div>
-                </div>
+                <FormLabel className="text-sm font-normal">Font Size</FormLabel>
+                <FormControl>
+                  <Select
+                    {...field}
+                    onValueChange={(value: fontSizeType) => {
+                      field.onChange(value)
+                      setChanges({
+                        ...form.getValues(),
+                        fontSize: value,
+                      })
+                    }}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select Font Size" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="small">Small</SelectItem>
+                      <SelectItem value="medium">Medium</SelectItem>
+                      <SelectItem value="large">Large</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </FormControl>
                 <FormMessage />
               </FormItem>
             )}
@@ -223,33 +211,27 @@ function ParagraphPropertiesComponent({
             name="fontWeight"
             render={({ field }) => (
               <FormItem>
-                <div className="flex items-baseline justify-between w-full gap-2">
-                  <FormLabel className="text-[13px] font-normal">
-                    Weight
-                  </FormLabel>
-                  <div className="w-full max-w-[187px]">
-                    <FormControl>
-                      <Select
-                        {...field}
-                        onValueChange={(value: fontWeightType) => {
-                          field.onChange(value)
-                          setChanges({
-                            ...form.getValues(),
-                            fontWeight: value,
-                          })
-                        }}
-                      >
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select Font Weight" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="light">Lighter</SelectItem>
-                          <SelectItem value="normal">Normal</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </FormControl>
-                  </div>
-                </div>
+                <FormLabel className="text-sm font-normal">Weight</FormLabel>
+                <FormControl>
+                  <Select
+                    {...field}
+                    onValueChange={(value: fontWeightType) => {
+                      field.onChange(value)
+                      setChanges({
+                        ...form.getValues(),
+                        fontWeight: value,
+                      })
+                    }}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select Font Weight" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="light">Lighter</SelectItem>
+                      <SelectItem value="normal">Normal</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </FormControl>
                 <FormMessage />
               </FormItem>
             )}
