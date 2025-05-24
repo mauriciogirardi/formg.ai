@@ -158,7 +158,7 @@ function RowLayoutCanvasComponent({
         )}
         onClick={handleSelectedBlock}
       >
-        <CardContent className="px-2 pb-2">
+        <CardContent className="px-2">
           {!blockInstance.isLocked && (
             <Button
               {...draggable.listeners}
@@ -188,17 +188,18 @@ function RowLayoutCanvasComponent({
                 {childBlocks?.map(block => (
                   <div
                     key={block.id}
-                    className="flex justify-center gap-1 w-full"
+                    className="flex justify-center gap-1 w-full relative"
                   >
                     <ChildCanvasComponentWrapper block={block} />
                     {isSelected && !blockInstance.isLocked && (
                       <Button
                         size="icon"
                         variant="ghost"
-                        className="bg-transparent w-6 h-6"
+                        className="bg-transparent w-6 h-6 absolute right-0 -top-1.5"
                         onClick={e => {
                           e.stopPropagation()
                           handleRemoveChildBlock(block.id)
+                          if (childBlocks.length === 1) handleDelete(e)
                         }}
                       >
                         <XIcon />
@@ -215,7 +216,7 @@ function RowLayoutCanvasComponent({
           <div className="w-[5px] absolute left-0 top-0 rounded-l-md h-full bg-primary" />
         )}
 
-        {isSelected && !blockInstance.isLocked && (
+        {isSelected && (
           <CardFooter className="flex items-center gap-3 h-0 justify-end border-t p-3 transition-all">
             <Button
               variant="outline"

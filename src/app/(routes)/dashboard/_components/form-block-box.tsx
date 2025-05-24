@@ -6,6 +6,7 @@ import { Separator } from '@/components/ui/separator'
 import { useBuilder } from '@/context/builder-provider'
 import { FormBlocks } from '@/lib/form-blocks'
 import { useState } from 'react'
+import { IAAssistanceButton } from './ia-assistance-button'
 
 export function FormBlockBox() {
   const [search, setSearch] = useState('')
@@ -26,13 +27,14 @@ export function FormBlockBox() {
 
   return (
     <div className="w-full">
-      <div className="flex flex-col gap-2 py-4 text-sm">
+      <div className="flex gap-2 py-4 text-sm">
         <Input
           placeholder="Search Blocks"
           className="placeholder:text-gray-400 shadow-sm"
           value={search}
           onChange={e => setSearch(e.target.value)}
         />
+        <IAAssistanceButton />
       </div>
 
       <div className="flex flex-col space-y-3 w-full">
