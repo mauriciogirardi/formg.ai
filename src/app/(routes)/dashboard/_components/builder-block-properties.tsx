@@ -5,6 +5,8 @@ import { useBuilder } from '@/context/builder-provider'
 import { FormBlocks } from '@/lib/form-blocks'
 import { MousePointerClick, SaveIcon, SendIcon } from 'lucide-react'
 import { PreviewDialog } from './preview-dialog'
+import { SaveFormButton } from './save-form-button'
+import PublishFormBtn from './publish-form-button'
 
 export function BuilderBlockProperties() {
   const { selectedBlockLayout } = useBuilder()
@@ -19,18 +21,8 @@ export function BuilderBlockProperties() {
         <div className="flex flex-col w-full items-center h-auto min-h-full">
           <div className="w-full flex items-center bg-white pb-2 pt-3 sticky border-b border-gray-200 top-0 gap-2 px-2">
             <PreviewDialog />
-            <Button
-              size="sm"
-              variant="outline"
-              className="text-primary border-primary hover:bg-primary hover:text-white"
-            >
-              <SaveIcon />
-              Save
-            </Button>
-            <Button size="sm">
-              <SendIcon />
-              Publish
-            </Button>
+            <SaveFormButton />
+            <PublishFormBtn />
           </div>
 
           {!selectedBlockLayout ? (

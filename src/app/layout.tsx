@@ -1,4 +1,4 @@
-import { Toaster } from '@/components/ui/sonner'
+import { Toaster } from '@/components/ui/toaster'
 import './globals.css'
 import type { Metadata } from 'next'
 import { DM_Sans } from 'next/font/google'
@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${dmSans.className} bg-white antialiased`}>
         {children}
-        <Toaster richColors theme="light" />
+        <Toaster />
       </body>
     </html>
   )
