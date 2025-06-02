@@ -74,7 +74,7 @@ function RadioSelectCanvasComponent({
     <div className="flex flex-col gap-3 w-full">
       <Label className="text-base font-normal">
         {label}
-        {required && <span className="text-red-500">*</span>}
+        {required && <span className="text-rose-500">*</span>}
 
         <RadioGroup
           disabled
@@ -297,11 +297,19 @@ function RadioSelectPropertiesComponent({
 
 type RadioSelectFormComponentProps = {
   blockInstance: FormBlockInstance
+  onBlur?: HandleBlurFunc
+  isError?: boolean
+  errorMessage?: string
+  formErrors?: FormErrorsType
 }
 
 function RadioSelectFormComponent({
   blockInstance,
+  onBlur,
+  isError: isSubmitError,
+  errorMessage,
 }: RadioSelectFormComponentProps) {
+  const block = blockInstance
   const { label, options, required } =
     blockInstance.attributes as AttributesType
 
@@ -319,17 +327,21 @@ function RadioSelectFormComponent({
   return (
     <div className="flex flex-col gap-3 w-full">
       <Label
-        className={cn('text-base font-normal mb-2', isError && 'text-rose-500')}
+        className={cn(
+          'text-base font-normal mb-2',
+          isError || (isSubmitError && 'text-rose-500')
+        )}
       >
         {label}
-        {required && <span className="text-red-500">*</span>}
+        {required && <span className="text-rose-500">*</span>}
 
         <RadioGroup
           className="space-y-2 mt-3"
           onValueChange={value => {
             setValue(value)
             const isValid = handleValidateField(value)
-            setIsError(isValid)
+            setIsError(!isValid)
+            onBlur?.(block.id, value)
           }}
         >
           {options.map(option => {
@@ -339,7 +351,10 @@ function RadioSelectFormComponent({
                 <RadioGroupItem
                   value={option}
                   id={uniqueId}
-                  className={cn('cursor-pointer', isError && 'text-rose-500')}
+                  className={cn(
+                    'cursor-pointer',
+                    isError || (isSubmitError && 'text-rose-500')
+                  )}
                 />
                 <Label
                   htmlFor={uniqueId}
@@ -352,10 +367,14 @@ function RadioSelectFormComponent({
           })}
         </RadioGroup>
 
-        {isError && (
+        {isError ? (
           <p className="text-rose-500 text-xs">
             {required && value.trim().length === 0 && 'This field is required.'}
           </p>
+        ) : (
+          errorMessage && (
+            <p className="text-rose-500 text-[0.8rem]">{errorMessage}</p>
+          )
         )}
       </Label>
     </div>

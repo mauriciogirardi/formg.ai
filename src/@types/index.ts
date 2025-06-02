@@ -49,6 +49,7 @@ export type FormBlockType = {
     onBlur?: HandleBlurFunc
     isError?: boolean
     errorMessage?: string
+    formErrors?: FormErrorsType
   }>
   propertiesComponent: FC<{
     blockInstance: FormBlockInstance

@@ -2,6 +2,7 @@
 
 import { cn } from '@/lib/utils'
 import { Blocks, type LucideIcon, MessageSquare } from 'lucide-react'
+import Link from 'next/link'
 import { useParams, usePathname, useRouter } from 'next/navigation'
 
 type NavType = {
@@ -33,8 +34,9 @@ export function SideMenu() {
       <ul className="flex items-center flex-col p-2">
         {navMenu.map(({ icon: Icon, title, url }) => (
           <li key={title} className="pb-2">
-            <button
+            <Link
               type="button"
+              href={url}
               className={cn(
                 'outline-none transition-colors ease-in-out p-2 hover:bg-white hover:text-black rounded-md',
                 url === pathname && 'bg-white text-black pointer-events-none'
@@ -42,7 +44,7 @@ export function SideMenu() {
             >
               <Icon className="size-[18px]" />
               <span className="sr-only">{title}</span>
-            </button>
+            </Link>
           </li>
         ))}
       </ul>
