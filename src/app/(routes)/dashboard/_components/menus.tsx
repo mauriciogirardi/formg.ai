@@ -20,7 +20,7 @@ export function Menus() {
       pathname: `/dashboard/form/response/${formId}`,
       isDisabled: true,
     },
-    { label: 'Settings', pathname: '/settings', isDisabled: false },
+    { label: 'Settings', pathname: '/settings', isDisabled: true },
   ]
 
   return (

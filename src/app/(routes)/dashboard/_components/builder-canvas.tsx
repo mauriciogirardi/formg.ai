@@ -18,6 +18,7 @@ import { allBlockLayouts } from '@/constants'
 import { useBuilder } from '@/context/builder-provider'
 import { FormBlocks } from '@/lib/form-blocks'
 import { generateUniqueId } from '@/lib/helpers'
+import { FloatingShareButton } from './floating-share-button'
 
 export function BuilderCanvas() {
   const {
@@ -209,6 +210,7 @@ function CanvasBlockLayoutWrapper({
       )}
 
       <CanvasBlockLayout blockInstance={blockLayout} />
+      <FloatingShareButton />
     </div>
   )
 }

@@ -1,5 +1,6 @@
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import { redirect } from 'next/navigation'
+import { Navbar } from './components/navbar'
 
 export default async function LandingPageLayout({
   children,
@@ -13,5 +14,10 @@ export default async function LandingPageLayout({
     redirect('/dashboard')
   }
 
-  return <div className="w-full h-auto">{children}</div>
+  return (
+    <div className="w-full h-auto">
+      <Navbar />
+      {children}
+    </div>
+  )
 }

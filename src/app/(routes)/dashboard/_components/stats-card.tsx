@@ -59,7 +59,7 @@ export function StatsCard({ data, loading }: StatsCard) {
             {loading ? (
               <Skeleton className="h-[36px] w-20" />
             ) : (
-              <>{data?.conversionRate?.toFixed(2)}%</>
+              <>{data?.conversionRate}%</>
             )}
           </CardTitle>
         </CardHeader>
@@ -77,7 +77,7 @@ export function StatsCard({ data, loading }: StatsCard) {
             {loading ? (
               <Skeleton className="h-[36px] w-20" />
             ) : (
-              <>{data?.engagementRate?.toFixed(2)}%</>
+              <>{data?.engagementRate}%</>
             )}
           </CardTitle>
         </CardHeader>

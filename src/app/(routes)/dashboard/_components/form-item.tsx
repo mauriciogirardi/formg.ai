@@ -44,19 +44,16 @@ export function FormItem({
     <button
       type="button"
       onClick={handleClick}
-      className="w-full h-auto outline-none focus-within:outline-primary focus-within:rounded-t-xl focus-within:outline-[0.5px]"
+      className="w-full h-auto outline-none focus-within:outline-primary focus-within:rounded-t-xl focus-within:outline-[0.5px] pb-4 px-2 rounded-md border border-purple-100 hover:shadow-sm bg-purple-50"
     >
-      <div className="w-full relative flex group items-center justify-center overflow-hidden h-[150px] rounded-t-xl border border-gray-300 bg-gradient-to-t from-primary/10 to-primary/10">
-        <div className="w-36 absolute bottom-0 flex flex-col items-center pt-6 px-4 h-32 rounded-t-xl bg-white shadow-lg">
-          <h5 className="text-sm font-medium mb-1 text-center text-gray-400 truncate block w-[200px]">
+      <div className="w-full relative flex group items-center justify-center overflow-hidden h-[150px] rounded-t-xl">
+        <div className="w-full absolute bottom-0 flex flex-col items-center pt-6 px-4 h-32 rounded-t-xl bg-white shadow-lg">
+          <h5 className="text-sm font-medium mb-1 text-center text-gray-600 truncate block w-full">
             {name}
           </h5>
           {Array.from({ length: 3 }).map((_, i) => (
             <div
-              key={`skeleton-${
-                // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-                i
-              }`}
+              key={`skeleton-${String(i)}`}
               className="flex items-center gap-1 mb-2"
             >
               <Skeleton className="size-3 rounded-full shrink-0" />
@@ -64,21 +61,17 @@ export function FormItem({
             </div>
           ))}
         </div>
+
+        <div className="absolute left-0 top-4 bg-gray-200 w-6 h-6 shadow-xl rounded-full flex items-center justify-center">
+          {published ? (
+            <Globe className="size-3 text-emerald-700" />
+          ) : (
+            <LockKeyholeIcon className="size-3 text-muted-foreground" />
+          )}
+        </div>
       </div>
 
-      <div className="w-full py-0">
-        <div className="flex w-full items-center justify-between py-1">
-          <span className="text-sm font-medium flex items-center gap-1">
-            {published ? (
-              <Globe className="size-3 text-muted-foreground" />
-            ) : (
-              <LockKeyholeIcon className="size-3 text-muted-foreground" />
-            )}
-            {name}
-          </span>
-          <EllipsisIcon className="text-gray-700 size-4" />
-        </div>
-
+      <div className="w-full py-0 pt-4">
         <div className="flex w-full items-center justify-between py-1 border-t border-gray-300">
           <div className="flex items-center gap-2">
             <span className="text-muted-foreground items-center flex gap-1 text-[14px]">

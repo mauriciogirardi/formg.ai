@@ -1,7 +1,8 @@
+'use client'
+
 import { Logo } from '@/components/logo'
 import { Button } from '@/components/ui/button'
 import { LoginLink, RegisterLink } from '@kinde-oss/kinde-auth-nextjs'
-import { Link } from 'lucide-react'
 
 export function Navbar() {
   return (
@@ -10,20 +11,6 @@ export function Navbar() {
         <div className="flex items-center flex-1 gap-9">
           <div>
             <Logo url="/" />
-          </div>
-
-          <div className="hidden lg:flex">
-            <ul className="flex items-center gap-5 text-[14px] font-medium text-white dark:text-white">
-              <li>
-                <Link href="#">AI Features</Link>
-              </li>
-              <li>
-                <Link href="#">Pricing</Link>
-              </li>
-              <li>
-                <Link href="#">Resources</Link>
-              </li>
-            </ul>
           </div>
         </div>
         <div className="flex items-center gap-4">
