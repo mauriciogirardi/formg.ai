@@ -50,7 +50,7 @@ export function Profile() {
                   </span>
                   <span
                     className="truncate text-muted text-xs block w-full max-w-[150px]"
-                    title={user?.email}
+                    title={user?.email ?? ''}
                   >
                     {user?.email}
                   </span>
