@@ -2,10 +2,10 @@ import { Suspense } from 'react'
 
 import { Separator } from '@/components/ui/separator'
 
-import { StatsListWrap } from './_components/stats-list-wrap'
 import { CreateForm } from './_components/create-form'
-import { FormList } from './_components/form-list'
 import { FormListSkeleton } from './_components/form-item'
+import { FormList } from './_components/form-list'
+import { StatsListWrap } from './_components/stats-list-wrap'
 
 export default function DashboardPage() {
   return (

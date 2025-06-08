@@ -13,11 +13,11 @@ import type {
   PositionLayout,
 } from '@/@types'
 
-import { cn } from '@/lib/utils'
 import { allBlockLayouts } from '@/constants'
 import { useBuilder } from '@/context/builder-provider'
 import { FormBlocks } from '@/lib/form-blocks'
 import { generateUniqueId } from '@/lib/helpers'
+import { cn } from '@/lib/utils'
 import { FloatingShareButton } from './floating-share-button'
 
 export function BuilderCanvas() {

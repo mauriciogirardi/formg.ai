@@ -10,13 +10,13 @@ import {
 } from '@/components/ui/breadcrumb'
 import { Separator } from '@/components/ui/separator'
 import { Sidebar, SidebarContent, SidebarHeader } from '@/components/ui/sidebar'
+import { Skeleton } from '@/components/ui/skeleton'
+import { useBuilder } from '@/context/builder-provider'
 import { cn } from '@/lib/utils'
 import { FileTextIcon, Home } from 'lucide-react'
-import { useState, type ComponentProps } from 'react'
+import { type ComponentProps, useState } from 'react'
 import { FormBlockBox } from './form-block-box'
 import { FormSettings } from './form-settings'
-import { useBuilder } from '@/context/builder-provider'
-import { Skeleton } from '@/components/ui/skeleton'
 
 type BuilderSidebarProps = ComponentProps<typeof Sidebar>
 

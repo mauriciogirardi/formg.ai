@@ -1,9 +1,9 @@
 'use client'
-import React from 'react'
-import { useBuilder } from '@/context/builder-provider'
 import { Button } from '@/components/ui/button'
-import { Copy } from 'lucide-react'
+import { useBuilder } from '@/context/builder-provider'
 import { toast } from '@/hooks/use-toast'
+import { Copy } from 'lucide-react'
+import React from 'react'
 
 export function FloatingShareButton() {
   const { formData } = useBuilder()

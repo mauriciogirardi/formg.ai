@@ -1,7 +1,7 @@
 import { Logo } from '@/components/logo'
 
-import { Profile } from './profile'
 import { Menus } from './menus'
+import { Profile } from './profile'
 
 export function Header() {
   return (

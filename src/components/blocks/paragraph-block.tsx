@@ -1,6 +1,9 @@
-import { ChevronDown, TextIcon } from 'lucide-react'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
+import type {
+  BlockType,
+  FormBlockInstance,
+  FormBlockType,
+  FormCategoriesType,
+} from '@/@types'
 import {
   Form,
   FormControl,
@@ -17,15 +20,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import type {
-  FormBlockInstance,
-  FormBlockType,
-  FormCategoriesType,
-  BlockType,
-} from '@/@types'
 import { fontSizeClass, fontWeightClass } from '@/constants'
-import { z } from 'zod'
 import { useBuilder } from '@/context/builder-provider'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { ChevronDown, TextIcon } from 'lucide-react'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
 import { Textarea } from '../ui/textarea'
 
 const blockCategory: FormCategoriesType = 'Field'

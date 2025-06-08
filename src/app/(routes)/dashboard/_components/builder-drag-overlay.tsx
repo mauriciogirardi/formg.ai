@@ -1,12 +1,12 @@
 'use client'
 
-import { useState } from 'react'
 import { type Active, DragOverlay, useDndMonitor } from '@dnd-kit/core'
+import { useState } from 'react'
 
+import type { BlockType } from '@/@types'
 import { BlockButtonDragOverlay } from '@/components/block-button-drag-overlay'
 import { useBuilder } from '@/context/builder-provider'
 import { FormBlocks } from '@/lib/form-blocks'
-import type { BlockType } from '@/@types'
 
 export function BuilderDragOverlay() {
   const { blockLayouts } = useBuilder()

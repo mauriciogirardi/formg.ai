@@ -1,5 +1,6 @@
 'use client'
 
+import { formatDistanceToNowStrict } from 'date-fns'
 import {
   Activity,
   EllipsisIcon,
@@ -8,7 +9,6 @@ import {
   MessageSquare,
 } from 'lucide-react'
 import { useRouter } from 'next/navigation'
-import { formatDistanceToNowStrict } from 'date-fns'
 
 import { Skeleton } from '@/components/ui/skeleton'
 

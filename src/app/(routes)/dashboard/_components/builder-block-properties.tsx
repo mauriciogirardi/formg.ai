@@ -1,12 +1,11 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
 import { useBuilder } from '@/context/builder-provider'
 import { FormBlocks } from '@/lib/form-blocks'
-import { MousePointerClick, SaveIcon, SendIcon } from 'lucide-react'
+import { MousePointerClick } from 'lucide-react'
 import { PreviewDialog } from './preview-dialog'
-import { SaveFormButton } from './save-form-button'
 import PublishFormBtn from './publish-form-button'
+import { SaveFormButton } from './save-form-button'
 
 export function BuilderBlockProperties() {
   const { selectedBlockLayout } = useBuilder()

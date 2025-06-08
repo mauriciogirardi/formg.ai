@@ -1,8 +1,8 @@
 import { SidebarInset, SidebarTrigger } from '@/components/ui/sidebar'
-import { BuilderSidebar } from './builder-sidebar'
 import { defaultBackgroundColor } from '@/constants'
-import { BuilderCanvas } from './builder-canvas'
 import { BuilderBlockProperties } from './builder-block-properties'
+import { BuilderCanvas } from './builder-canvas'
+import { BuilderSidebar } from './builder-sidebar'
 
 type BuilderProps = {
   isSidebarOpen: boolean

@@ -1,4 +1,10 @@
-import { useEffect, useState } from 'react'
+import type {
+  BlockType,
+  FormBlockInstance,
+  FormBlockType,
+  FormCategoriesType,
+  HandleBlurFunc,
+} from '@/@types'
 import {
   Form,
   FormControl,
@@ -8,20 +14,14 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form'
-import type {
-  FormBlockInstance,
-  FormBlockType,
-  FormCategoriesType,
-  HandleBlurFunc,
-  BlockType,
-} from '@/@types'
-import { z } from 'zod'
-import { ChevronDown, TextCursorInput } from 'lucide-react'
-import { Label } from '../ui/label'
-import { Input } from '../ui/input'
 import { useBuilder } from '@/context/builder-provider'
-import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { ChevronDown, TextCursorInput } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+import { Input } from '../ui/input'
+import { Label } from '../ui/label'
 import { Switch } from '../ui/switch'
 
 const blockCategory: FormCategoriesType = 'Field'

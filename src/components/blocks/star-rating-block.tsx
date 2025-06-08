@@ -1,17 +1,12 @@
 import '@smastrom/react-rating/style.css'
 import './styles.css'
 
-import { Rating } from '@smastrom/react-rating'
-import { ChevronDown, StarIcon } from 'lucide-react'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
-import { useForm } from 'react-hook-form'
 import type {
+  BlockType,
   FormBlockInstance,
   FormBlockType,
   FormCategoriesType,
   HandleBlurFunc,
-  BlockType,
 } from '@/@types'
 import {
   Form,
@@ -21,14 +16,19 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form'
-import { useBuilder } from '@/context/builder-provider'
 import { Input } from '@/components/ui/input'
 import { Switch } from '@/components/ui/switch'
+import { useBuilder } from '@/context/builder-provider'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Rating } from '@smastrom/react-rating'
+import { ChevronDown, StarIcon } from 'lucide-react'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
 
 import { Label } from '../ui/label'
 
-import { useEffect, useState } from 'react'
 import { defaultPrimaryColor } from '@/constants'
+import { useEffect, useState } from 'react'
 
 const blockCategory: FormCategoriesType = 'Field'
 const blockType: BlockType = 'StarRating'

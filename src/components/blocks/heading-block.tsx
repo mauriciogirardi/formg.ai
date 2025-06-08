@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react'
-import { z } from 'zod'
-import { useForm } from 'react-hook-form'
-import { ChevronDown, HeadingIcon } from 'lucide-react'
-import { zodResolver } from '@hookform/resolvers/zod'
+import type {
+  BlockType,
+  FormBlockInstance,
+  FormBlockType,
+  FormCategoriesType,
+} from '@/@types'
 import {
   Form,
   FormControl,
@@ -19,16 +20,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import type {
-  FormBlockInstance,
-  FormBlockType,
-  FormCategoriesType,
-  BlockType,
-} from '@/@types'
 import { fontSizeClass, fontWeightClass } from '@/constants'
-import { Input } from '../ui/input'
 import { useBuilder } from '@/context/builder-provider'
 import { cn } from '@/lib/utils'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { ChevronDown, HeadingIcon } from 'lucide-react'
+import React, { useEffect } from 'react'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+import { Input } from '../ui/input'
 
 const blockCategory: FormCategoriesType = 'Field'
 const blockType: BlockType = 'Heading'

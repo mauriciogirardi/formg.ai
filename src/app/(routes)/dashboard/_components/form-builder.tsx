@@ -1,11 +1,11 @@
 'use client'
 
 import { SidebarProvider } from '@/components/ui/sidebar'
+import { Skeleton } from '@/components/ui/skeleton'
+import { useBuilder } from '@/context/builder-provider'
+import { DndContext, MouseSensor, useSensor, useSensors } from '@dnd-kit/core'
 import { type CSSProperties, useState } from 'react'
 import { Builder } from './builder'
-import { useBuilder } from '@/context/builder-provider'
-import { Skeleton } from '@/components/ui/skeleton'
-import { DndContext, MouseSensor, useSensor, useSensors } from '@dnd-kit/core'
 import { BuilderDragOverlay } from './builder-drag-overlay'
 
 export function FormBuilder() {

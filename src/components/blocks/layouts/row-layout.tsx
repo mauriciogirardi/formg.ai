@@ -5,7 +5,7 @@ import {
   Trash2Icon,
   XIcon,
 } from 'lucide-react'
-import { useState, type MouseEvent } from 'react'
+import { type MouseEvent, useState } from 'react'
 
 import type {
   BlockType,
@@ -16,22 +16,22 @@ import type {
   HandleBlurFunc,
 } from '@/@types'
 
+import { ChildCanvasComponentWrapper } from '@/components/child-canvas-component-wrapper'
+import { ChildFormComponentWrapper } from '@/components/child-form-component-wrapper'
+import { ChildPropertiesComponentWrapper } from '@/components/child-properties-component-wrapper'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardFooter } from '@/components/ui/card'
-import { cn } from '@/lib/utils'
+import { allBlockLayouts } from '@/constants'
 import { useBuilder } from '@/context/builder-provider'
+import { FormBlocks } from '@/lib/form-blocks'
+import { generateUniqueId } from '@/lib/helpers'
+import { cn } from '@/lib/utils'
 import {
   type Active,
   useDndMonitor,
   useDraggable,
   useDroppable,
 } from '@dnd-kit/core'
-import { allBlockLayouts } from '@/constants'
-import { ChildCanvasComponentWrapper } from '@/components/child-canvas-component-wrapper'
-import { FormBlocks } from '@/lib/form-blocks'
-import { generateUniqueId } from '@/lib/helpers'
-import { ChildPropertiesComponentWrapper } from '@/components/child-properties-component-wrapper'
-import { ChildFormComponentWrapper } from '@/components/child-form-component-wrapper'
 
 const blockType: BlockType = 'RowLayout'
 const blockCategory: FormCategoriesType = 'Layout'

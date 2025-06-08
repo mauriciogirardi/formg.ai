@@ -1,5 +1,10 @@
-import { z } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
+import type {
+  BlockType,
+  FormBlockInstance,
+  FormBlockType,
+  FormCategoriesType,
+  HandleBlurFunc,
+} from '@/@types'
 import {
   Form,
   FormControl,
@@ -10,20 +15,15 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import type {
-  FormBlockInstance,
-  FormBlockType,
-  FormCategoriesType,
-  HandleBlurFunc,
-  BlockType,
-} from '@/@types'
-import { ChevronDown, LetterTextIcon } from 'lucide-react'
-import { Label } from '../ui/label'
-import { Textarea } from '../ui/textarea'
-import { Switch } from '../ui/switch'
-import { useEffect, useState } from 'react'
 import { useBuilder } from '@/context/builder-provider'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { ChevronDown, LetterTextIcon } from 'lucide-react'
+import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+import { Label } from '../ui/label'
+import { Switch } from '../ui/switch'
+import { Textarea } from '../ui/textarea'
 
 const blockCategory: FormCategoriesType = 'Field'
 const blockType: BlockType = 'TextArea'
