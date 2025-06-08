@@ -1,3 +1,4 @@
+//@ts-ignore
 import type { Form, FormSettings } from '@prisma/client'
 import type { ElementType, FC } from 'react'
 
