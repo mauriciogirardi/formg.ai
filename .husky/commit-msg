@@ -1,2 +1,17 @@
 #!/bin/sh
-pnpm commitlint --edit "$1"
+MSG_FILE="$1"
+
+pnpm commitlint --edit "$MSG_FILE"
+STATUS=$?
+
+if [ $STATUS -ne 0 ]; then
+  echo ""
+  echo "❌ Commit inválido! Use o padrão Conventional Commits:"
+  echo ""
+  echo "  Ex: feat: adiciona componente de botão"
+  echo "      fix: corrige bug no login"
+  echo "      docs: atualiza README"
+  echo ""
+  echo "🔗 Referência: https://www.conventionalcommits.org/pt-br/v1.0.0/"
+  exit 1
+fi
