@@ -10,7 +10,8 @@
     "prepare": "husky install",
     "check-types": "tsc --noEmit",
     "pre-commit": "pnpm lint && pnpm check-types",
-    "cz": "cz"
+    "cz": "cz",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@dnd-kit/core": "6.3.1",
