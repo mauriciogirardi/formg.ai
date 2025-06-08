@@ -6,6 +6,7 @@ export async function FormList() {
 
   return (
     <>
+      {/* @ts-ignore  */}
       {forms?.map(form => (
         <FormItem key={form.id} {...form} />
       ))}
