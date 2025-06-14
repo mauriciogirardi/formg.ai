@@ -1,13 +1,13 @@
+import { FormHelperText } from '@/components/form-helper-text'
+import { FormLabel } from '@/components/form-label'
 import { Label } from '@/components/ui/label'
+import { Textarea } from '@/components/ui/textarea'
 import {
-  defaultColumnValue,
-  defaultRowValue,
   type NewInstance,
   type TextAreaCanvasComponentProps,
+  defaultColumnValue,
+  defaultRowValue,
 } from './types'
-import { Textarea } from '@/components/ui/textarea'
-import { FormLabel } from '@/components/form-label'
-import { FormHelperText } from '@/components/form-helper-text'
 
 export function TextareaCanvasComponent({
   blockInstance,

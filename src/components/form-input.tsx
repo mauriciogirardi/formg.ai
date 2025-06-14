@@ -1,3 +1,4 @@
+import type { HTMLInputTypeAttribute } from 'react'
 import type { FieldValues, Path, UseFormReturn } from 'react-hook-form'
 import {
   FormControl,
@@ -8,7 +9,6 @@ import {
   FormMessage,
 } from './ui/form'
 import { Input } from './ui/input'
-import type { HTMLInputTypeAttribute } from 'react'
 
 type FormInputProps<
   TFormValues extends FieldValues,

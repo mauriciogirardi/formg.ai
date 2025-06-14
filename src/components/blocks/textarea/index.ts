@@ -1,9 +1,9 @@
 import type { FormBlockType } from '@/@types'
-import { blockType, blockCategory } from './types'
 import { LetterTextIcon } from 'lucide-react'
 import { TextareaCanvasComponent } from './textarea-canvas-component'
 import { TextareaFormComponent } from './textarea-form-component'
 import { TextareaPropertiesComponent } from './textarea-properties-component'
+import { blockCategory, blockType } from './types'
 
 export const TextAreaBlock: FormBlockType = {
   blockType,

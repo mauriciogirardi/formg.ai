@@ -1,10 +1,10 @@
 import {
+  type BlockType,
   type FormBlockInstance,
+  type FormCategoriesType,
   FormCategoriesTypeEnum,
   type HandleBlurFunc,
   TypeFormsEnum,
-  type BlockType,
-  type FormCategoriesType,
 } from '@/@types'
 import { z } from 'zod'
 

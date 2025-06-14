@@ -1,17 +1,17 @@
 'use client'
 
+import { FormError } from '@/components/form-error'
+import { FormHelperText } from '@/components/form-helper-text'
+import { FormLabel } from '@/components/form-label'
 import { Textarea } from '@/components/ui/textarea'
+import { cn } from '@/lib/utils'
 import { useState } from 'react'
 import {
-  defaultColumnValue,
-  defaultRowValue,
   type NewInstance,
   type TextareaFormComponentProps,
+  defaultColumnValue,
+  defaultRowValue,
 } from './types'
-import { FormLabel } from '@/components/form-label'
-import { FormHelperText } from '@/components/form-helper-text'
-import { cn } from '@/lib/utils'
-import { FormError } from '@/components/form-error'
 
 export function TextareaFormComponent({
   blockInstance,

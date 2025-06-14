@@ -1,17 +1,17 @@
-import type { fetchFormStats } from "@/actions/form-action";
+import type { fetchFormStats } from '@/actions/form-action'
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Skeleton } from "@/components/ui/skeleton";
+} from '@/components/ui/card'
+import { Skeleton } from '@/components/ui/skeleton'
 
 type StatsCard = {
-  loading: boolean;
-  data: Awaited<ReturnType<typeof fetchFormStats>>;
-};
+  loading: boolean
+  data: Awaited<ReturnType<typeof fetchFormStats>>
+}
 
 export function StatsCard({ data, loading }: StatsCard) {
   return (
@@ -88,5 +88,5 @@ export function StatsCard({ data, loading }: StatsCard) {
         </CardContent>
       </Card>
     </div>
-  );
+  )
 }

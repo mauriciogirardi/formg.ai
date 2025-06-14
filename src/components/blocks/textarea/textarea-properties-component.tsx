@@ -1,20 +1,20 @@
 'use client'
 
 import type { FormBlockInstance } from '@/@types'
-import {
-  defaultRowValue,
-  type NewInstance,
-  propertiesValidateSchema,
-  type PropertiesValidateSchemaType,
-} from './types'
-import { useBuilder } from '@/context/builder-provider'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useEffect } from 'react'
-import { Form } from '@/components/ui/form'
-import { PropertyName } from '@/components/property-name'
 import { FormInput } from '@/components/form-input'
 import { FormSwitch } from '@/components/form-switch'
+import { PropertyName } from '@/components/property-name'
+import { Form } from '@/components/ui/form'
+import { useBuilder } from '@/context/builder-provider'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useEffect } from 'react'
+import { useForm } from 'react-hook-form'
+import {
+  type NewInstance,
+  type PropertiesValidateSchemaType,
+  defaultRowValue,
+  propertiesValidateSchema,
+} from './types'
 
 export function TextareaPropertiesComponent({
   positionIndex,
