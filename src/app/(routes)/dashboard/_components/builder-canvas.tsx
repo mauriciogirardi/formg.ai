@@ -1,17 +1,7 @@
-import {
-  type Active,
-  useDndMonitor,
-  useDraggable,
-  useDroppable,
-} from '@dnd-kit/core'
+import { type Active, useDndMonitor, useDroppable } from '@dnd-kit/core'
 import { useState } from 'react'
 
-import type {
-  BlockType,
-  FormBlockInstance,
-  FormBlockType,
-  PositionLayout,
-} from '@/@types'
+import type { BlockType, FormBlockInstance, PositionLayout } from '@/@types'
 
 import { allBlockLayouts } from '@/constants'
 import { useBuilder } from '@/context/builder-provider'

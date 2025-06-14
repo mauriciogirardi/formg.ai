@@ -5,7 +5,7 @@ import { ParagraphBlock } from '@/components/blocks/paragraph-block'
 import { RadioSelectBlock } from '@/components/blocks/radio-select-block'
 import { StarRatingBlock } from '@/components/blocks/star-rating-block'
 import { TextFieldBlock } from '@/components/blocks/text-field'
-import { TextAreaBlock } from '@/components/blocks/textarea-block'
+import { TextAreaBlock } from '@/components/blocks/textarea'
 
 export const FormBlocks: FormBlocksType = {
   RowLayout: RowLayoutBlock,

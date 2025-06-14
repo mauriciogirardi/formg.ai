@@ -5,13 +5,18 @@ import type { ElementType, FC } from 'react'
 export type FormWithSettings = Form & { settings: FormSettings }
 
 export enum TypeFormsEnum {
-  rowLayout = 'ROW_LAYOUT',
-  radioSelect = 'RADIO_SELECT',
-  textField = 'TEXT_FIELD',
-  textArea = 'TEXTAREA',
-  starRating = 'STAR_RATING',
-  heading = 'HEADING',
-  paragraph = 'PARAGRAPH',
+  rowLayout = 'RowLayout',
+  radioSelect = 'RadioSelect',
+  textField = 'TextField',
+  textArea = 'TextArea',
+  starRating = 'StarRating',
+  heading = 'Heading',
+  paragraph = 'Paragraph',
+}
+
+export enum FormCategoriesTypeEnum {
+  layout = 'Layout',
+  field = 'Field',
 }
 
 export enum TypeCategoryEnum {

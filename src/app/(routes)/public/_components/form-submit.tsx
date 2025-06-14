@@ -50,7 +50,7 @@ export function FormSubmit({ blocks, formId }: FormSubmitProps) {
     if (formErrors[key] && value?.trim() !== '') {
       setFormErrors(prevErrors => {
         const updatedErrors = { ...prevErrors }
-        delete updatedErrors[key] // Remove the key from errors
+        delete updatedErrors[key]
         return updatedErrors
       })
     }
