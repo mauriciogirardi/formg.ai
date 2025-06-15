@@ -1,5 +1,5 @@
 import type { FormBlocksType } from '@/@types'
-import { HeadingBlock } from '@/components/blocks/heading-block'
+import { HeadingBlock } from '@/components/blocks/heading'
 import { RowLayoutBlock } from '@/components/blocks/layouts/row-layout'
 import { ParagraphBlock } from '@/components/blocks/paragraph-block'
 import { RadioSelectBlock } from '@/components/blocks/radio-select-block'
