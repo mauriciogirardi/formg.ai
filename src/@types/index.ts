@@ -19,14 +19,9 @@ export enum FormCategoriesTypeEnum {
   field = 'Field',
 }
 
-export enum TypeCategoryEnum {
-  layout = 'LAYOUT',
-  field = 'FIELD',
-}
-
 export enum TypePositionEnum {
-  above = 'ABOVE',
-  below = 'BELOW',
+  above = 'above',
+  below = 'below',
 }
 
 export type PositionLayout = 'above' | 'below'
