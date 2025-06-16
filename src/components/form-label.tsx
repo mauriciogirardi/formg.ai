@@ -1,15 +1,18 @@
+import type { ReactNode } from 'react'
 import { Label } from './ui/label'
 
 type FormLabelProps = {
   label: string
   required?: boolean
   error?: boolean
+  children?: ReactNode
 }
 
 export function FormLabel({
   label,
   required = false,
   error = false,
+  children,
 }: FormLabelProps) {
   return (
     <Label
@@ -17,6 +20,7 @@ export function FormLabel({
     >
       {label}
       {required && <span className="text-rose-500">*</span>}
+      {children}
     </Label>
   )
 }
