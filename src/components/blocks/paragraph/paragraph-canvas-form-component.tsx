@@ -1,7 +1,7 @@
 import type { FormBlockInstance } from '@/@types'
 import { fontSizeClass, fontWeightClass } from '@/constants'
-import type { NewInstance } from './types'
 import { cn } from '@/lib/utils'
+import type { NewInstance } from './types'
 
 export function ParagraphCanvasFormComponent({
   blockInstance,
