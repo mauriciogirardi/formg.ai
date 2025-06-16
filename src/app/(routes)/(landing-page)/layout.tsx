@@ -15,7 +15,7 @@ export default async function LandingPageLayout({
   }
 
   return (
-    <div className="w-full h-auto">
+    <div className="w-full min-h-screen">
       <Navbar />
       {children}
     </div>
