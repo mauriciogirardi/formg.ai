@@ -1,11 +1,10 @@
 'use client'
 
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Loader2, Plus } from 'lucide-react'
+import { InfoIcon, Loader2, Plus } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { toast } from 'sonner'
 import { z } from 'zod'
 
 import { createForm } from '@/actions/form-action'
@@ -28,6 +27,13 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet'
 import { Textarea } from '@/components/ui/textarea'
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from '@/components/ui/tooltip'
+import { useFormStats } from '@/hooks/use-form-stats'
+import { toast } from '@/hooks/use-toast'
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
@@ -39,6 +45,9 @@ type FormData = z.infer<typeof formSchema>
 export function CreateForm() {
   const router = useRouter()
   const [isOpen, setIsOpen] = useState(false)
+
+  const stats = useFormStats()
+  const maxForm = (stats.data?.totalForms && stats.data.totalForms > 5) || false
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -56,10 +65,15 @@ export function CreateForm() {
     if (response.success) {
       setIsOpen(false)
       form.reset()
-      toast.success('Success', { description: response.message })
+
+      toast({ title: 'Success', description: response.message })
       router.push(`/dashboard/form/builder/${response.form?.formId}`)
     } else {
-      toast.error('Error', { description: response.message })
+      toast({
+        title: 'Error',
+        description: response.message,
+        variant: 'destructive',
+      })
     }
   }
 
@@ -73,12 +87,28 @@ export function CreateForm() {
   return (
     <>
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
-        <SheetTrigger asChild>
-          <Button className="gap-1">
-            <Plus className="size-4" />
-            Create a form
-          </Button>
-        </SheetTrigger>
+        <div className="relative">
+          {maxForm && (
+            <Tooltip>
+              <TooltipTrigger className="absolute cursor-pointer -top-4 -left-4">
+                <InfoIcon className="size-5 text-rose-600" />
+              </TooltipTrigger>
+              <TooltipContent className="w-[200px]">
+                <p>
+                  Heads up! In the demo version, you can create up to 5 forms.
+                  Upgrade to unlock unlimited access.
+                </p>
+              </TooltipContent>
+            </Tooltip>
+          )}
+
+          <SheetTrigger asChild>
+            <Button className="gap-1" disabled={stats.isLoading || maxForm}>
+              <Plus className="size-4" />
+              Create a form
+            </Button>
+          </SheetTrigger>
+        </div>
 
         <SheetContent side="bottom">
           <div className="w-full max-w-5xl mx-auto">

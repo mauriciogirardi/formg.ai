@@ -1,5 +1,5 @@
 import type { FormBlockInstance } from '@/@types'
-import { fetchPublishFormById } from '@/actions/form-action'
+import { countViews, fetchPublishFormById } from '@/actions/form-action'
 import React from 'react'
 import { FormSubmit } from '../../_components/form-submit'
 import { NotAvailable } from '../../_components/not-available'
@@ -8,6 +8,7 @@ const Page = async ({ params }: { params: { formId: string } }) => {
   const { formId } = params
 
   const { form } = await fetchPublishFormById(formId)
+  await countViews(formId)
 
   if (!form) return <NotAvailable />
 

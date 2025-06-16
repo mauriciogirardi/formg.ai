@@ -27,11 +27,9 @@ export default function DashboardPage() {
             <h5 className="text-xl font-semibold tracking-tight">All Forms</h5>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-5 lg:grid-cols-3 xl:grid-cols-5">
-            <Suspense fallback={<FormListSkeleton />}>
-              <FormList />
-            </Suspense>
-          </div>
+          <Suspense fallback={<FormListSkeleton />}>
+            <FormList />
+          </Suspense>
         </section>
       </div>
     </div>

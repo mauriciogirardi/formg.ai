@@ -1,5 +1,7 @@
 import { Toaster } from '@/components/ui/toaster'
 import './globals.css'
+import { TooltipProvider } from '@/components/ui/tooltip'
+import { QueryProvider } from '@/providers/query-provider'
 import type { Metadata } from 'next'
 import { DM_Sans } from 'next/font/google'
 
@@ -21,8 +23,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${dmSans.className} bg-white antialiased`}>
-        {children}
-        <Toaster />
+        <QueryProvider>
+          <TooltipProvider>
+            {children}
+            <Toaster />
+          </TooltipProvider>
+        </QueryProvider>
       </body>
     </html>
   )

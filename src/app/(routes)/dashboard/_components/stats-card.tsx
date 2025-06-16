@@ -7,6 +7,7 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
+import { Stats } from './stats'
 
 type StatsCard = {
   loading: boolean
@@ -23,7 +24,7 @@ export function StatsCard({ data, loading }: StatsCard) {
             {loading ? (
               <Skeleton className="h-[36px] w-16" />
             ) : (
-              data?.totalForms
+              <Stats amount={data?.totalForms} />
             )}
           </CardTitle>
         </CardHeader>
@@ -41,7 +42,7 @@ export function StatsCard({ data, loading }: StatsCard) {
             {loading ? (
               <Skeleton className="h-[36px] w-16" />
             ) : (
-              data?.totalResponses
+              <Stats amount={data?.totalResponses} />
             )}
           </CardTitle>
         </CardHeader>
@@ -59,7 +60,7 @@ export function StatsCard({ data, loading }: StatsCard) {
             {loading ? (
               <Skeleton className="h-[36px] w-20" />
             ) : (
-              <>{data?.conversionRate}%</>
+              <Stats amount={data?.conversionRate} percent />
             )}
           </CardTitle>
         </CardHeader>
@@ -77,7 +78,7 @@ export function StatsCard({ data, loading }: StatsCard) {
             {loading ? (
               <Skeleton className="h-[36px] w-20" />
             ) : (
-              <>{data?.engagementRate?.toFixed(2)}%</>
+              <Stats amount={data?.engagementRate} percent />
             )}
           </CardTitle>
         </CardHeader>

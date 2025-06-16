@@ -1,3 +1,6 @@
+// npx prisma generate
+// npx prisma db push
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -24,6 +27,7 @@ model Form {
   settings      FormSettings?   @relation(fields: [settingsId], references: [id])
   settingsId    Int?            @map("settings_id")
   formResponses FormResponses[]
+  viewsRecords  FormView[]
 
   @@map("forms")
 }
@@ -49,4 +53,13 @@ model FormResponses {
   form   Form @relation(fields: [formId], references: [id])
 
   @@map("form_responses")
+}
+
+model FormView {
+  id       Int      @id @default(autoincrement())
+  formId   Int      @map("form_id")
+  viewedAt DateTime @default(now()) @map("viewed_at")
+  form     Form     @relation(fields: [formId], references: [id])
+
+  @@map("form_view")
 }

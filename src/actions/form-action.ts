@@ -1,6 +1,6 @@
 'use server'
 
-import { FormWithSettings } from '@/@types'
+import { getFormStatsByUserId } from '@/api/form-stars-api'
 import { defaultBackgroundColor, defaultPrimaryColor } from '@/constants'
 import { generateUniqueId } from '@/lib/helpers'
 import { prisma } from '@/lib/prisma'
@@ -18,26 +18,21 @@ export async function fetchFormStats() {
       }
     }
 
-    const { _sum, _count } = await prisma.form.aggregate({
-      where: { userId: user.id },
-      _sum: { views: true, responses: true },
-      _count: { id: true },
-    })
-
-    const views = _sum.views ?? 0
-    const totalResponses = _sum.responses ?? 0
-    const totalForms = _count?.id ?? 0
-    const conversionRate = views > 0 ? (totalResponses / views) * 100 : 0
-    const engagementRate =
-      totalForms > 0 ? (totalResponses / totalForms) * 100 : 0
+    const {
+      conversionRate,
+      engagementRate,
+      totalForms,
+      totalResponses,
+      views,
+    } = await getFormStatsByUserId(user.id)
 
     return {
       success: true,
-      views,
-      totalForms,
-      totalResponses,
       conversionRate,
       engagementRate,
+      totalForms,
+      totalResponses,
+      views,
     }
   } catch (error) {
     return {
@@ -306,7 +301,7 @@ export async function submitResponse(formId: string, response: string) {
     }
     await prisma.form.update({
       where: {
-        formId: formId,
+        formId,
         published: true,
       },
       data: {
@@ -361,6 +356,46 @@ export async function fetchAllResponseByFormId(formId: string) {
       success: true,
       message: 'Form fetched successfully',
       form,
+    }
+  } catch (error) {
+    return {
+      success: false,
+      message: 'Something went wrong',
+    }
+  }
+}
+
+export async function countViews(formId: string) {
+  try {
+    if (!formId) {
+      return {
+        success: false,
+        message: 'FormId is required',
+      }
+    }
+    const form = await prisma.form.findFirst({
+      where: {
+        formId: formId,
+        published: true,
+      },
+    })
+
+    if (!form) {
+      return {
+        success: false,
+        message: 'Form not found or unpublished',
+      }
+    }
+
+    await prisma.formView.create({
+      data: {
+        formId: form.id,
+      },
+    })
+
+    return {
+      success: true,
+      message: 'Response submitted',
     }
   } catch (error) {
     return {
