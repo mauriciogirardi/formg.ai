@@ -15,7 +15,7 @@ export function Navbar() {
           <LoginLink>
             <Button
               variant="ghost"
-              className="text-white hover:bg-white/10 transition"
+              className="text-white hover:bg-white/10 hover:text-white transition"
             >
               Sign In
             </Button>
