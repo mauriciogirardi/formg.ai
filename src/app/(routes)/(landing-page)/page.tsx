@@ -60,6 +60,55 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
+
+      {/* Key Features Section */}
+      <section className="w-full py-20 px-4 md:px-10 lg:px-20 text-center z-10 relative">
+        <h2 className="text-3xl md:text-4xl font-bold mb-10 text-white">
+          Why choose <span className="text-violet-400">Formg AI Builder?</span>
+        </h2>
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {[
+            {
+              title: '🤖 AI Suggestions',
+              desc: 'Let AI help you build smarter, contextual forms in seconds.',
+            },
+            {
+              title: '🧩 Drag & Drop',
+              desc: 'Easily drag and rearrange components with a fluid UI.',
+            },
+            {
+              title: '📊 Analytics Ready',
+              desc: 'Get instant insights from responses and form usage.',
+            },
+          ].map(({ title, desc }, i) => (
+            <div
+              key={String(i)}
+              className="bg-white/10 border border-white/20 backdrop-blur-md rounded-xl p-6 shadow-lg transition hover:scale-[1.03]"
+            >
+              <h3 className="text-xl font-semibold mb-2 text-violet-300">
+                {title}
+              </h3>
+              <p className="text-white/80 text-sm">{desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* GitHub Call-to-Action */}
+      <div className="text-center mt-12 px-6">
+        <p className="text-white/70 text-lg">
+          ⭐ If you find this project helpful, please consider starring it on{' '}
+          <a
+            href="https://github.com/mauriciogirardi/formg.ai"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline text-violet-400 hover:text-violet-300"
+          >
+            GitHub
+          </a>
+          .
+        </p>
+      </div>
     </div>
   )
 }
