@@ -21,6 +21,8 @@ type FormInputProps<
   onValueChange?: (value: TFormValues[TFieldName]) => void
   defaultValue?: string | number
   type?: HTMLInputTypeAttribute
+  max?: number
+  min?: number
 }
 
 export function FormInput<
@@ -34,6 +36,8 @@ export function FormInput<
   onValueChange,
   defaultValue,
   type,
+  max,
+  min,
 }: FormInputProps<TFormValues, TFieldName>) {
   return (
     <FormField
@@ -47,6 +51,8 @@ export function FormInput<
               {...field}
               defaultValue={defaultValue}
               type={type}
+              max={max}
+              min={min}
               onChange={e => {
                 field.onChange(e)
                 if (onValueChange) {

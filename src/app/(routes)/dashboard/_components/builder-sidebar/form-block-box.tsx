@@ -1,5 +1,6 @@
 'use client'
 
+import { FormCategoriesTypeEnum } from '@/@types'
 import { BlockButtonElement } from '@/components/block-button-element'
 import { Input } from '@/components/ui/input'
 import { Separator } from '@/components/ui/separator'
@@ -18,11 +19,11 @@ export function FormBlockBox() {
   )
 
   const layoutBlocks = filteredBlocks.filter(
-    block => block.blockCategory === 'Layout'
+    block => block.blockCategory === FormCategoriesTypeEnum.layout
   )
 
   const fieldBlocks = filteredBlocks.filter(
-    block => block.blockCategory === 'Field'
+    block => block.blockCategory === FormCategoriesTypeEnum.field
   )
 
   return (
@@ -33,8 +34,9 @@ export function FormBlockBox() {
           className="placeholder:text-gray-400 shadow-sm"
           value={search}
           onChange={e => setSearch(e.target.value)}
+          disabled={isPublish}
         />
-        <IAAssistanceButton />
+        <IAAssistanceButton disabled={isPublish} />
       </div>
 
       <div className="flex flex-col space-y-3 w-full">

@@ -1,3 +1,5 @@
+'use client'
+
 import { type Active, useDndMonitor, useDroppable } from '@dnd-kit/core'
 import { useState } from 'react'
 

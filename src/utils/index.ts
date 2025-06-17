@@ -4,3 +4,10 @@ export const validateField = (val: string, required: boolean) => {
   }
   return true
 }
+
+export const validateFieldNumber = (value: number, required: boolean) => {
+  if (required) {
+    return value > 0
+  }
+  return true
+}

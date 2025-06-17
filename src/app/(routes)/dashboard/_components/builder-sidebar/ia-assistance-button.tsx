@@ -16,7 +16,11 @@ import { generateFormQuestionPrompt } from '@/lib/prompt'
 import { Loader2Icon, SparklesIcon } from 'lucide-react'
 import { useState } from 'react'
 
-export function IAAssistanceButton() {
+type IAAssistanceButtonProps = {
+  disabled?: boolean
+}
+
+export function IAAssistanceButton({ disabled }: IAAssistanceButtonProps) {
   const { blockLayouts, setBlockLayouts, formData } = useBuilder()
   const [open, setOpen] = useState(false)
   const [show, setShow] = useState(false)
@@ -95,6 +99,7 @@ export function IAAssistanceButton() {
           size="icon"
           className="rounded-lg bg-primary/20 border-none p-4 shadow-sm text-primary hover:text-white"
           aria-label="AI assistance"
+          disabled={disabled}
         >
           <SparklesIcon className="size-8" />
         </Button>

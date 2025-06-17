@@ -1,6 +1,8 @@
 export const defaultPrimaryColor = '#673ab7'
 export const defaultBackgroundColor = '#f0ebf8'
 
+export const defaultMaxStars = 5
+
 export const allBlockLayouts = ['RowLayout', 'ColumnLayout', 'GridLayout']
 
 export const fontWeightClass = {

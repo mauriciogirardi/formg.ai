@@ -2,6 +2,7 @@ import type { FormBlockInstance } from '@/@types'
 import { fetchAllResponseByFormId } from '@/actions/form-action'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
+import { cn } from '@/lib/utils'
 import { LinkIcon } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
@@ -33,14 +34,18 @@ export default async function RespondsPage({ params }: RespondsPageProps) {
         <div className="w-full max-w-6xl mx-auto pt-1 px-4 md:px-0">
           <div className="w-full flex items-center justify-between py-5">
             <h1 className="text-2xl font-semibold tracking-tight text-zinc-800">
-              ({responses?.length}) Responses
+              {responses?.length} Responses
             </h1>
             <Link
               href={`${process.env.NEXT_PUBLIC_APP_URL}/public/submit-form/${formId}`}
               target="_blank"
               rel="noopener noreferrer"
+              className={cn(!responses?.length && 'pointer-events-none')}
             >
-              <Button className="w-full max-w-44 !bg-primary">
+              <Button
+                className="w-full max-w-44 !bg-primary"
+                disabled={!responses?.length}
+              >
                 <LinkIcon />
                 Visit Link
               </Button>

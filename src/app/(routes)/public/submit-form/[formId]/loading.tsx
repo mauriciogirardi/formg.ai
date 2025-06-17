@@ -1,10 +1,10 @@
-import { Loader, Loader2 } from 'lucide-react'
+import { FIcon } from '@/icons/f-icon'
 import React from 'react'
 
 export default function Loading() {
   return (
     <div className="w-full flex h-screen items-center justify-center">
-      <Loader2 size="3rem" className="animate-spin" />
+      <FIcon className="animate-pulse" size="40" />
     </div>
   )
 }

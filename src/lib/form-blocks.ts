@@ -3,7 +3,7 @@ import { HeadingBlock } from '@/components/blocks/heading'
 import { RowLayoutBlock } from '@/components/blocks/layouts/row-layout'
 import { ParagraphBlock } from '@/components/blocks/paragraph'
 import { RadioSelectBlock } from '@/components/blocks/radio'
-import { StarRatingBlock } from '@/components/blocks/star-rating-block'
+import { StarRatingBlock } from '@/components/blocks/star-rating'
 import { TextFieldBlock } from '@/components/blocks/text-field'
 import { TextAreaBlock } from '@/components/blocks/textarea'
 

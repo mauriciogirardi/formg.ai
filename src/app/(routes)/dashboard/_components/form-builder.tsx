@@ -3,6 +3,7 @@
 import { SidebarProvider } from '@/components/ui/sidebar'
 import { Skeleton } from '@/components/ui/skeleton'
 import { useBuilder } from '@/context/builder-provider'
+import { FIcon } from '@/icons/f-icon'
 import { DndContext, MouseSensor, useSensor, useSensors } from '@dnd-kit/core'
 import { type CSSProperties, useState } from 'react'
 import { Builder } from './builder'
@@ -14,12 +15,8 @@ export function FormBuilder() {
 
   if (loading) {
     return (
-      <div className="w-full flex h-full justify-between">
-        <Skeleton className="w-[23%] h-full" />
-        <div className="py-10">
-          <Skeleton className="w-[600px] h-full rounded-lg" />
-        </div>
-        <Skeleton className="w-[23%] h-full" />
+      <div className="w-full flex h-full items-center justify-center">
+        <FIcon className="animate-pulse" size="40" />
       </div>
     )
   }
