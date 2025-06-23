@@ -1,17 +1,17 @@
-Welcome to the Formg.ai repository!
-This project harnesses advanced AI technologies and modern front-end frameworks to deliver a powerful, intuitive form-building experience. Designed with usability and scalability in mind, the platform allows users to easily create customized forms through a seamless drag-and-drop interface — no coding required.
+Welcome to the formg.ai repository!
+This project is currently in demo mode and leverages cutting-edge AI technologies along with modern front-end frameworks to deliver a powerful and intuitive form-building experience. Built with a focus on usability and scalability, the platform enables users to create fully customized forms effortlessly through a drag-and-drop interface — no coding required.
 
-Whether for surveys, data collection, feedback, or workflows, the Formg.ai intelligently assists users during form creation, suggesting fields, optimizing structure, and analyzing responses in real-time to provide actionable insights.
+Whether for surveys, data collection, feedback, or automated workflows, formg.ai intelligently assists users during form creation by suggesting fields, optimizing structure, and analyzing responses in real-time to provide valuable insights.
 
-🚀 Key Features:
+### 🚀 Key Features:
 ⚙️ AI-powered suggestions for form fields and structure
 
-🧩 Drag-and-drop form builder with a clean and responsive UI
+🧩 Drag-and-drop form builder with a modern and responsive UI
 
-📊 Real-time data analysis and insight generation
+📊 Real-time data analysis and automatic insight generation
 
 🌐 Built with modern technologies for performance and scalability
 
-🔐 Designed with privacy and security in mind
+🔐 Designed with a focus on privacy and security
 
-This repository aims to streamline the form creation process and empower teams to collect, interpret, and act on data more efficiently.
+⚠️ This project is currently in demo stage. Some features may be limited or under active development.
