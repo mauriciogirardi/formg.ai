@@ -1,10 +1,10 @@
 'use client'
 
-import { useBuilderStore } from '@/stores/builder-store'
-import { FormBuilder } from '../../../_components/form-builder'
-import { useParams } from 'next/navigation'
-import { useQuery } from '@tanstack/react-query'
 import { FIcon } from '@/icons/f-icon'
+import { useBuilderStore } from '@/stores/builder-store'
+import { useQuery } from '@tanstack/react-query'
+import { useParams } from 'next/navigation'
+import { FormBuilder } from '../../../_components/form-builder'
 
 export default function BuilderPage() {
   const params = useParams()

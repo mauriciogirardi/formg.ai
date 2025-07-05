@@ -6,13 +6,13 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from '@/components/ui/tooltip'
+import { useBuilderStore } from '@/stores/builder-store'
 import { InfoIcon } from 'lucide-react'
 import { type ComponentProps, useState } from 'react'
 import { FormBlockBox } from './form-block-box'
 import { FromBlockBreadcrumb } from './form-block-breadcrumb'
 import { FormSettings } from './form-settings'
 import { Tag, TagButtons } from './tag-buttons'
-import { useBuilderStore } from '@/stores/builder-store'
 
 type BuilderSidebarProps = ComponentProps<typeof Sidebar>
 

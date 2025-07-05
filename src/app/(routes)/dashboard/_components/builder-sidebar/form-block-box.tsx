@@ -5,9 +5,9 @@ import { BlockButtonElement } from '@/components/block-button-element'
 import { Input } from '@/components/ui/input'
 import { Separator } from '@/components/ui/separator'
 import { FormBlocks } from '@/lib/form-blocks'
+import { useBuilderStore } from '@/stores/builder-store'
 import { useState } from 'react'
 import { IAAssistanceButton } from './ia-assistance-button'
-import { useBuilderStore } from '@/stores/builder-store'
 
 export function FormBlockBox() {
   const [search, setSearch] = useState('')

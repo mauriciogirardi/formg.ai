@@ -9,8 +9,8 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
-import { Stats } from './stats'
 import { useQuery } from '@tanstack/react-query'
+import { Stats } from './stats'
 
 type StatsCard = {
   data: Awaited<ReturnType<typeof fetchFormStats>>

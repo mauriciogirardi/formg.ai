@@ -25,13 +25,13 @@ import { allBlockLayouts } from '@/constants'
 import { FormBlocks } from '@/lib/form-blocks'
 import { generateUniqueId } from '@/lib/helpers'
 import { cn } from '@/lib/utils'
+import { useBuilderStore } from '@/stores/builder-store'
 import {
   type Active,
   useDndMonitor,
   useDraggable,
   useDroppable,
 } from '@dnd-kit/core'
-import { useBuilderStore } from '@/stores/builder-store'
 
 const blockType: BlockType = 'RowLayout'
 const blockCategory: FormCategoriesType = 'Layout'

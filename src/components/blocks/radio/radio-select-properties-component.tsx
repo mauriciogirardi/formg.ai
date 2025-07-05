@@ -12,6 +12,7 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import { useBuilderStore } from '@/stores/builder-store'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { PlusIcon, XIcon } from 'lucide-react'
 import { useEffect } from 'react'
@@ -22,7 +23,6 @@ import {
   type RadioSelectPropertiesComponentProps,
   propertiesValidateSchema,
 } from './types'
-import { useBuilderStore } from '@/stores/builder-store'
 
 export function RadioSelectPropertiesComponent({
   blockInstance,

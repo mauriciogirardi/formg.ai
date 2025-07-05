@@ -2,11 +2,11 @@
 
 import { SidebarProvider } from '@/components/ui/sidebar'
 import { FIcon } from '@/icons/f-icon'
+import { useBuilderStore } from '@/stores/builder-store'
 import { DndContext, MouseSensor, useSensor, useSensors } from '@dnd-kit/core'
 import { type CSSProperties, useState } from 'react'
 import { Builder } from './builder'
 import { BuilderDragOverlay } from './builder-drag-overlay'
-import { useBuilderStore } from '@/stores/builder-store'
 
 export function FormBuilder() {
   const formData = useBuilderStore(store => store.formData)

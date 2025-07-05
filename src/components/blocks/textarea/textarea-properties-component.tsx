@@ -5,6 +5,7 @@ import { FormInput } from '@/components/form-input'
 import { FormSwitch } from '@/components/form-switch'
 import { PropertyName } from '@/components/property-name'
 import { Form } from '@/components/ui/form'
+import { useBuilderStore } from '@/stores/builder-store'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
@@ -14,7 +15,6 @@ import {
   defaultRowValue,
   propertiesValidateSchema,
 } from './types'
-import { useBuilderStore } from '@/stores/builder-store'
 
 export function TextareaPropertiesComponent({
   positionIndex,
