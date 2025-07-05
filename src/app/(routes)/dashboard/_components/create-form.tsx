@@ -47,7 +47,8 @@ export function CreateForm() {
   const [isOpen, setIsOpen] = useState(false)
 
   const stats = useFormStats()
-  const maxForm = (stats.data?.totalForms && stats.data.totalForms > 5) || false
+  const maxForm =
+    (stats.data?.totalForms && stats.data.totalForms >= 5) || false
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),

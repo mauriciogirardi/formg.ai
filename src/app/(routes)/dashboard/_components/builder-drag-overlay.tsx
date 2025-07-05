@@ -5,11 +5,11 @@ import { useState } from 'react'
 
 import type { BlockType } from '@/@types'
 import { BlockButtonDragOverlay } from '@/components/block-button-drag-overlay'
-import { useBuilder } from '@/context/builder-provider'
 import { FormBlocks } from '@/lib/form-blocks'
+import { useBuilderStore } from '@/stores/builder-store'
 
 export function BuilderDragOverlay() {
-  const { blockLayouts } = useBuilder()
+  const blockLayouts = useBuilderStore(store => store.blockLayouts)
   const [draggedItem, setDraggedItem] = useState<Active | null>(null)
 
   useDndMonitor({

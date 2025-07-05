@@ -4,7 +4,6 @@ import { FormInput } from '@/components/form-input'
 import { FormSelect } from '@/components/form-select'
 import { PropertyName } from '@/components/property-name'
 import { Form } from '@/components/ui/form'
-import { useBuilder } from '@/context/builder-provider'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
@@ -19,6 +18,7 @@ import {
   propertiesValidateSchema,
   type propertiesValidateSchemaType,
 } from './types'
+import { useBuilderStore } from '@/stores/builder-store'
 
 export function HeadingPropertiesComponent({
   positionIndex,
@@ -26,7 +26,7 @@ export function HeadingPropertiesComponent({
   blockInstance,
 }: HeadingPropertiesComponentProps) {
   const block = blockInstance as NewInstance
-  const { onUpdateChildBlock } = useBuilder()
+  const onUpdateChildBlock = useBuilderStore(store => store.onUpdateChildBlock)
 
   const form = useForm<propertiesValidateSchemaType>({
     resolver: zodResolver(propertiesValidateSchema),

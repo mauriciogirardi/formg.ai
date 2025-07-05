@@ -12,7 +12,6 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { useBuilder } from '@/context/builder-provider'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { PlusIcon, XIcon } from 'lucide-react'
 import { useEffect } from 'react'
@@ -23,13 +22,14 @@ import {
   type RadioSelectPropertiesComponentProps,
   propertiesValidateSchema,
 } from './types'
+import { useBuilderStore } from '@/stores/builder-store'
 
 export function RadioSelectPropertiesComponent({
   blockInstance,
   positionIndex,
   parentId,
 }: RadioSelectPropertiesComponentProps) {
-  const { onUpdateChildBlock } = useBuilder()
+  const onUpdateChildBlock = useBuilderStore(store => store.onUpdateChildBlock)
 
   const { label, options, required } =
     blockInstance.attributes as AttributesType

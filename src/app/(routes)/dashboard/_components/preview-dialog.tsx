@@ -11,11 +11,11 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 import { defaultBackgroundColor } from '@/constants'
-import { useBuilder } from '@/context/builder-provider'
 import { FormBlocks } from '@/lib/form-blocks'
+import { useBuilderStore } from '@/stores/builder-store'
 
 export function PreviewDialog() {
-  const { blockLayouts } = useBuilder()
+  const blockLayouts = useBuilderStore(store => store.blockLayouts)
 
   return (
     <Dialog>
@@ -29,12 +29,12 @@ export function PreviewDialog() {
           Preview
         </Button>
       </DialogTrigger>
-      <DialogContent className="flex flex-col flex-grow p-0 gap-0 max-w-[650px]">
+      <DialogContent className="flex flex-col flex-grow p-0 gap-0 max-w-screen h-screen">
         <DialogHeader className="p-4 shadow-sm bg-white">
           <DialogTitle>Preview Mode</DialogTitle>
         </DialogHeader>
         <div
-          className="w-full h-[600px] 2xl:h-[800px] overflow-y-auto scrollbar transition-all duration-300"
+          className="w-full h-full overflow-y-auto scrollbar transition-all duration-300"
           style={{ background: defaultBackgroundColor }}
         >
           <div className="w-full h-full max-w-[650px] mx-auto">

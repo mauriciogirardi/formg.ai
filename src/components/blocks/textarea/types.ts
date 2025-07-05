@@ -13,7 +13,10 @@ export const propertiesValidateSchema = z.object({
   label: z.string().trim().min(2).max(255),
   required: z.boolean().default(false),
   helperText: z.string().trim().max(255).optional(),
-  rows: z.number().min(1).max(20).default(3),
+  rows: z
+    .union([z.string(), z.number()])
+    .transform(val => Number(val))
+    .refine(val => !Number.isNaN(val) && val >= 1 && val <= 20),
 })
 
 export type PropertiesValidateSchemaType = z.infer<

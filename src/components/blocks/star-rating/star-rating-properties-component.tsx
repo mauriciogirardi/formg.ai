@@ -5,7 +5,6 @@ import { FormSwitch } from '@/components/form-switch'
 import { PropertyName } from '@/components/property-name'
 import { Form } from '@/components/ui/form'
 import { defaultMaxStars } from '@/constants'
-import { useBuilder } from '@/context/builder-provider'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
@@ -15,6 +14,7 @@ import {
   type StarRatingPropertiesComponentProps,
   propertiesValidateSchema,
 } from './types'
+import { useBuilderStore } from '@/stores/builder-store'
 
 export function StarRatingPropertiesComponent({
   positionIndex,
@@ -22,7 +22,7 @@ export function StarRatingPropertiesComponent({
   blockInstance,
 }: StarRatingPropertiesComponentProps) {
   const block = blockInstance as NewInstance
-  const { onUpdateChildBlock } = useBuilder()
+  const onUpdateChildBlock = useBuilderStore(store => store.onUpdateChildBlock)
 
   const form = useForm<PropertiesValidateSchemaType>({
     resolver: zodResolver(propertiesValidateSchema),

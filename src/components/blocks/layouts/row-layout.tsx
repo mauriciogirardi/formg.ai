@@ -22,7 +22,6 @@ import { ChildPropertiesComponentWrapper } from '@/components/child-properties-c
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardFooter } from '@/components/ui/card'
 import { allBlockLayouts } from '@/constants'
-import { useBuilder } from '@/context/builder-provider'
 import { FormBlocks } from '@/lib/form-blocks'
 import { generateUniqueId } from '@/lib/helpers'
 import { cn } from '@/lib/utils'
@@ -32,6 +31,7 @@ import {
   useDraggable,
   useDroppable,
 } from '@dnd-kit/core'
+import { useBuilderStore } from '@/stores/builder-store'
 
 const blockType: BlockType = 'RowLayout'
 const blockCategory: FormCategoriesType = 'Layout'
@@ -62,13 +62,19 @@ type RowLayoutCanvasComponentProps = {
 function RowLayoutCanvasComponent({
   blockInstance,
 }: RowLayoutCanvasComponentProps) {
-  const {
-    onDuplicateBlockLayout,
-    onRemoveBlockLayout,
-    onUpdateBlockLayout,
-    onSelectedLayout,
-    selectedBlockLayout,
-  } = useBuilder()
+  const onDuplicateBlockLayout = useBuilderStore(
+    store => store.onDuplicateBlockLayout
+  )
+  const onUpdateBlockLayout = useBuilderStore(
+    store => store.onUpdateBlockLayout
+  )
+  const onRemoveBlockLayout = useBuilderStore(
+    store => store.onRemoveBlockLayout
+  )
+  const onSelectedLayout = useBuilderStore(store => store.onSelectedLayout)
+  const selectedBlockLayout = useBuilderStore(
+    store => store.selectedBlockLayout
+  )
 
   const [activeBlock, setActiveBlock] = useState<Active | null>(null)
 

@@ -1,13 +1,13 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { useBuilder } from '@/context/builder-provider'
 import { toast } from '@/hooks/use-toast'
+import { useBuilderStore } from '@/stores/builder-store'
 import { Copy } from 'lucide-react'
 import React from 'react'
 
 export function FloatingShareButton() {
-  const { formData } = useBuilder()
+  const formData = useBuilderStore(store => store.formData)
 
   const copyLinkToClipboard = () => {
     const shareableLink = `${process.env.NEXT_PUBLIC_APP_URL}/public/submit-form/${formData?.formId}`

@@ -6,19 +6,22 @@ import { useState } from 'react'
 import type { BlockType, FormBlockInstance, PositionLayout } from '@/@types'
 
 import { allBlockLayouts } from '@/constants'
-import { useBuilder } from '@/context/builder-provider'
 import { FormBlocks } from '@/lib/form-blocks'
 import { generateUniqueId } from '@/lib/helpers'
 import { cn } from '@/lib/utils'
 import { FloatingShareButton } from './floating-share-button'
+import { useBuilderStore } from '@/stores/builder-store'
 
 export function BuilderCanvas() {
-  const {
-    blockLayouts,
-    onAddBlockLayout,
-    onRepositionBlockLayout,
-    onInsertBlockLayoutAtIndex,
-  } = useBuilder()
+  const blockLayouts = useBuilderStore(store => store.blockLayouts)
+  const onAddBlockLayout = useBuilderStore(store => store.onAddBlockLayout)
+  const onRepositionBlockLayout = useBuilderStore(
+    store => store.onRepositionBlockLayout
+  )
+  const onInsertBlockLayoutAtIndex = useBuilderStore(
+    store => store.onInsertBlockLayoutAtIndex
+  )
+
   const [activeBlock, setActiveBlock] = useState<Active | null>(null)
 
   const droppable = useDroppable({

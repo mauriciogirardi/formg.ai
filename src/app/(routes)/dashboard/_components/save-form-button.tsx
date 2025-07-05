@@ -1,14 +1,17 @@
 'use client'
 import { saveForm } from '@/actions/form-action'
 import { Button } from '@/components/ui/button'
-import { useBuilder } from '@/context/builder-provider'
 import { toast } from '@/hooks/use-toast'
 import { cn } from '@/lib/utils'
+import { useBuilderStore } from '@/stores/builder-store'
 import { Loader2Icon, SaveIcon } from 'lucide-react'
 import { useTransition } from 'react'
 
 export function SaveFormButton() {
-  const { formData, setFormData, blockLayouts } = useBuilder()
+  const formData = useBuilderStore(store => store.formData)
+  const setFormData = useBuilderStore(store => store.setFormData)
+  const blockLayouts = useBuilderStore(store => store.blockLayouts)
+
   const formId = formData?.formId
 
   const [isPending, startTransition] = useTransition()

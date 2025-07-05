@@ -1,16 +1,16 @@
 'use client'
 
 import { SidebarProvider } from '@/components/ui/sidebar'
-import { Skeleton } from '@/components/ui/skeleton'
-import { useBuilder } from '@/context/builder-provider'
 import { FIcon } from '@/icons/f-icon'
 import { DndContext, MouseSensor, useSensor, useSensors } from '@dnd-kit/core'
 import { type CSSProperties, useState } from 'react'
 import { Builder } from './builder'
 import { BuilderDragOverlay } from './builder-drag-overlay'
+import { useBuilderStore } from '@/stores/builder-store'
 
 export function FormBuilder() {
-  const { formData, loading } = useBuilder()
+  const formData = useBuilderStore(store => store.formData)
+  const loading = useBuilderStore(store => store.loading)
   const isPublish = formData?.published || false
 
   if (loading) {

@@ -4,14 +4,15 @@ import { FormCategoriesTypeEnum } from '@/@types'
 import { BlockButtonElement } from '@/components/block-button-element'
 import { Input } from '@/components/ui/input'
 import { Separator } from '@/components/ui/separator'
-import { useBuilder } from '@/context/builder-provider'
 import { FormBlocks } from '@/lib/form-blocks'
 import { useState } from 'react'
 import { IAAssistanceButton } from './ia-assistance-button'
+import { useBuilderStore } from '@/stores/builder-store'
 
 export function FormBlockBox() {
   const [search, setSearch] = useState('')
-  const { formData } = useBuilder()
+  const formData = useBuilderStore(store => store.formData)
+
   const isPublish = !!formData?.published
 
   const filteredBlocks = Object.values(FormBlocks).filter(block =>

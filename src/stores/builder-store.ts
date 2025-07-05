@@ -1,4 +1,8 @@
-import type { FormBlockInstance, PositionLayout } from '@/@types'
+import type {
+  FormBlockInstance,
+  FormWithSettings,
+  PositionLayout,
+} from '@/@types'
 import { generateUniqueId } from '@/lib/helpers'
 import { produce } from 'immer'
 import { create } from 'zustand'
@@ -50,6 +54,8 @@ export type StoreSet = {
   ): void
 }
 
+type FormData = FormWithSettings | null
+
 interface State {
   loading: boolean
   formData: FormData | null
@@ -79,44 +85,52 @@ interface Mutations {
 }
 
 function actions(set: StoreSet, get: () => State): Mutations {
-  function fetchFormById(formId: string) {
+  async function fetchFormById(formId: string): Promise<void> {
     set(
       produce((state: State) => {
         state.loading = true
       })
     )
 
-    if (!formId) return
+    if (!formId) {
+      set(
+        produce((state: State) => {
+          state.loading = false
+        })
+      )
+      return Promise.reject(new Error('Form ID inválido.'))
+    }
 
-    fetch(`/api/fetch-form-by-id?formId=${formId}`, {
+    return fetch(`/api/fetch-form-by-id?formId=${formId}`, {
       method: 'GET',
       next: { tags: ['fetchFormById'] },
     })
       .then(async res => {
-        if (!res.ok) throw new Error('Failed to fetch formId.')
+        if (!res.ok) throw new Error('Falha ao buscar formulário.')
         return res.json()
       })
       .then(res => {
         const { data } = res
-        if (data?.form) {
-          set(
-            produce((state: State) => {
-              state.formData = data.form
+        if (!data?.form) throw new Error('Formulário não encontrado.')
 
-              if (data.form?.jsonBlocks) {
-                try {
-                  const parsedBlocks = JSON.parse(data.form.jsonBlocks)
-                  state.blockLayouts = parsedBlocks
-                } catch (e) {
-                  console.error('Erro ao fazer parse dos blocos:', e)
-                }
+        set(
+          produce((state: State) => {
+            state.formData = data.form
+
+            if (data.form?.jsonBlocks) {
+              try {
+                const parsedBlocks = JSON.parse(data.form.jsonBlocks)
+                state.blockLayouts = parsedBlocks
+              } catch (e) {
+                console.error('Erro ao fazer parse dos blocos:', e)
               }
-            })
-          )
-        }
+            }
+          })
+        )
       })
       .catch(err => {
-        console.error('Error fetching form:', err)
+        console.error('Erro ao buscar formulário:', err)
+        throw err
       })
       .finally(() => {
         set(

@@ -8,11 +8,11 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover'
 import { Textarea } from '@/components/ui/textarea'
-import { useBuilder } from '@/context/builder-provider'
 import { toast } from '@/hooks/use-toast'
 import { AIChatSession } from '@/lib/google-ai'
 import { generateUniqueId } from '@/lib/helpers'
 import { generateFormQuestionPrompt } from '@/lib/prompt'
+import { useBuilderStore } from '@/stores/builder-store'
 import { Loader2Icon, SparklesIcon } from 'lucide-react'
 import { useState } from 'react'
 
@@ -21,7 +21,10 @@ type IAAssistanceButtonProps = {
 }
 
 export function IAAssistanceButton({ disabled }: IAAssistanceButtonProps) {
-  const { blockLayouts, setBlockLayouts, formData } = useBuilder()
+  const formData = useBuilderStore(store => store.formData)
+  const setBlockLayouts = useBuilderStore(store => store.setBlockLayouts)
+  const blockLayouts = useBuilderStore(store => store.blockLayouts)
+
   const [open, setOpen] = useState(false)
   const [show, setShow] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -54,16 +57,14 @@ export function IAAssistanceButton({ disabled }: IAAssistanceButtonProps) {
       const generatedBlocks = parsedResponse.blocks
       const addUniqueIdToGeneratedBlocks = addUniqueIds(generatedBlocks)
 
-      setBlockLayouts(prevBlocks => {
-        if (actionType === 'addQuestions') {
-          return [...prevBlocks, ...addUniqueIdToGeneratedBlocks]
-        }
-        if (actionType === 'createForm') {
-          return addUniqueIdToGeneratedBlocks
-        }
+      if (actionType === 'addQuestions') {
+        setBlockLayouts([...blockLayouts, ...addUniqueIdToGeneratedBlocks])
+      } else if (actionType === 'createForm') {
+        setBlockLayouts(addUniqueIdToGeneratedBlocks)
+      } else {
         console.warn(`Unhandled actionType: ${actionType}`)
-        return prevBlocks
-      })
+        setBlockLayouts(blockLayouts)
+      }
 
       setOpen(false)
       setUserRequest('')

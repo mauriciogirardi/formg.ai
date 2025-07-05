@@ -6,19 +6,20 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from '@/components/ui/tooltip'
-import { useBuilder } from '@/context/builder-provider'
 import { InfoIcon } from 'lucide-react'
 import { type ComponentProps, useState } from 'react'
 import { FormBlockBox } from './form-block-box'
 import { FromBlockBreadcrumb } from './form-block-breadcrumb'
 import { FormSettings } from './form-settings'
 import { Tag, TagButtons } from './tag-buttons'
+import { useBuilderStore } from '@/stores/builder-store'
 
 type BuilderSidebarProps = ComponentProps<typeof Sidebar>
 
 export function BuilderSidebar({ ...rest }: BuilderSidebarProps) {
   const [tab, setTab] = useState<Tag>(Tag.blocks)
-  const { formData, loading } = useBuilder()
+  const formData = useBuilderStore(store => store.formData)
+  const loading = useBuilderStore(store => store.loading)
 
   return (
     <Sidebar className="border-r left-12 pt-16" {...rest}>

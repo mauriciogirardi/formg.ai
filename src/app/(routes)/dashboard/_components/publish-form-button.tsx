@@ -2,14 +2,17 @@
 
 import { updatePublish } from '@/actions/form-action'
 import { Button } from '@/components/ui/button'
-import { useBuilder } from '@/context/builder-provider'
 import { toast } from '@/hooks/use-toast'
 import { cn } from '@/lib/utils'
-import { Loader, Loader2, Send } from 'lucide-react'
+import { useBuilderStore } from '@/stores/builder-store'
+import { Loader2, Send } from 'lucide-react'
 import React, { useState } from 'react'
 
 const PublishFormBtn = () => {
-  const { formData, setFormData, onSelectedLayout } = useBuilder()
+  const formData = useBuilderStore(store => store.formData)
+  const setFormData = useBuilderStore(store => store.setFormData)
+  const onSelectedLayout = useBuilderStore(store => store.onSelectedLayout)
+
   const formId = formData?.formId
 
   const [isLoading, setIsLoading] = useState(false)

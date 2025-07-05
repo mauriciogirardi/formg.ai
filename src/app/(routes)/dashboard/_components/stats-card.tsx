@@ -1,4 +1,6 @@
-import type { fetchFormStats } from '@/actions/form-action'
+'use client'
+
+import { fetchFormStats } from '@/actions/form-action'
 import {
   Card,
   CardContent,
@@ -8,21 +10,26 @@ import {
 } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
 import { Stats } from './stats'
+import { useQuery } from '@tanstack/react-query'
 
 type StatsCard = {
-  loading: boolean
   data: Awaited<ReturnType<typeof fetchFormStats>>
 }
 
-export function StatsCard({ data, loading }: StatsCard) {
+export function StatsCard() {
+  const { isLoading, data } = useQuery({
+    queryKey: ['stats'],
+    queryFn: async () => await fetchFormStats(),
+  })
+
   return (
     <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
       <Card className="bg-white">
         <CardHeader className="pb-2">
           <CardDescription>Total Forms</CardDescription>
           <CardTitle className="text-4xl">
-            {loading ? (
-              <Skeleton className="h-[36px] w-16" />
+            {isLoading ? (
+              <Skeleton className="h-[39px] w-16" />
             ) : (
               <Stats amount={data?.totalForms} />
             )}
@@ -39,8 +46,8 @@ export function StatsCard({ data, loading }: StatsCard) {
         <CardHeader className="pb-2">
           <CardDescription>Total Responses</CardDescription>
           <CardTitle className="text-4xl">
-            {loading ? (
-              <Skeleton className="h-[36px] w-16" />
+            {isLoading ? (
+              <Skeleton className="h-[39px] w-16" />
             ) : (
               <Stats amount={data?.totalResponses} />
             )}
@@ -57,8 +64,8 @@ export function StatsCard({ data, loading }: StatsCard) {
         <CardHeader className="pb-2">
           <CardDescription>Conversion Rate</CardDescription>
           <CardTitle className="text-4xl">
-            {loading ? (
-              <Skeleton className="h-[36px] w-20" />
+            {isLoading ? (
+              <Skeleton className="h-[39px] w-20" />
             ) : (
               <Stats amount={data?.conversionRate} percent />
             )}
@@ -75,8 +82,8 @@ export function StatsCard({ data, loading }: StatsCard) {
         <CardHeader className="pb-2">
           <CardDescription>Engagement Rate</CardDescription>
           <CardTitle className="text-4xl">
-            {loading ? (
-              <Skeleton className="h-[36px] w-20" />
+            {isLoading ? (
+              <Skeleton className="h-[39px] w-20" />
             ) : (
               <Stats amount={data?.engagementRate} percent />
             )}
