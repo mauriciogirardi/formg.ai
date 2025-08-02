@@ -31,17 +31,15 @@ export function FloatingShareButton() {
   if (!formData?.published) return
 
   return (
-    <div className="fixed bottom-5 z-50 transition-transform duration-500 ease-in-out right-6">
-      <Button
-        onClick={copyLinkToClipboard}
-        variant="outline"
-        size="lg"
-        className="rounded-full !bg-primary !text-white p-4 shadow-lg transition-all duration-300 hover:scale-105"
-        aria-label="Copy Shareable Link"
-      >
-        <Copy className="size-5" />
-        Share Link
-      </Button>
-    </div>
+    <Button
+      onClick={copyLinkToClipboard}
+      variant="outline"
+      size="sm"
+      className=""
+      aria-label="Copy Shareable Link"
+    >
+      <Copy className="size-5" />
+      Link
+    </Button>
   )
 }

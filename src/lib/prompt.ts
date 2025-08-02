@@ -74,6 +74,14 @@ export const generateFormQuestionPrompt = (
      - \`helperText\`: (string) Helper text.
      - \`required\`: (boolean) If the field is required.
      - \`maxStars\`: (number) Default 5.
+
+8. **Select**
+   - Attributes:
+     - \`label\`: (string) The field label.
+     - \`helperText\`: (string) Helper text.
+     - \`required\`: (boolean) If the field is required.
+     - \`placeHolder\`: (string) Placeholder text.
+     - \`options\`: (array) Options, e.g., ["Option 1", "Option 2"].
 ---
 
 

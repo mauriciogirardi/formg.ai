@@ -6,6 +6,7 @@ import { RadioSelectBlock } from '@/components/blocks/radio'
 import { StarRatingBlock } from '@/components/blocks/star-rating'
 import { TextFieldBlock } from '@/components/blocks/text-field'
 import { TextAreaBlock } from '@/components/blocks/textarea'
+import { SelectBlock } from '@/components/blocks/select'
 
 export const FormBlocks: FormBlocksType = {
   RowLayout: RowLayoutBlock,
@@ -15,4 +16,5 @@ export const FormBlocks: FormBlocksType = {
   StarRating: StarRatingBlock,
   Paragraph: ParagraphBlock,
   Heading: HeadingBlock,
+  Select: SelectBlock,
 }

@@ -5,7 +5,7 @@ import { useBuilderStore } from '@/stores/builder-store'
 import { MousePointerClick } from 'lucide-react'
 import { PreviewDialog } from './preview-dialog'
 import PublishFormBtn from './publish-form-button'
-import { SaveFormButton } from './save-form-button'
+import { FloatingShareButton } from './floating-share-button'
 
 export function BuilderBlockProperties() {
   const selectedBlockLayout = useBuilderStore(
@@ -22,8 +22,8 @@ export function BuilderBlockProperties() {
         <div className="flex flex-col w-full items-center h-auto min-h-full">
           <div className="w-full flex items-center bg-white pb-2 pt-3 sticky border-b border-gray-200 top-0 gap-2 px-2">
             <PreviewDialog />
-            <SaveFormButton />
             <PublishFormBtn />
+            <FloatingShareButton />
           </div>
 
           {!selectedBlockLayout ? (

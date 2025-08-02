@@ -57,6 +57,7 @@ export function TextFieldPropertiesComponent({
       },
     })
   }
+
   return (
     <div className="w-full pb-4">
       <PropertyName name={`TextField ${positionIndex}`} />

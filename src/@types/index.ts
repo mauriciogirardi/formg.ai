@@ -12,6 +12,7 @@ export enum TypeFormsEnum {
   starRating = 'StarRating',
   heading = 'Heading',
   paragraph = 'Paragraph',
+  select = 'Select',
 }
 
 export enum FormCategoriesTypeEnum {
@@ -35,6 +36,7 @@ export type BlockType =
   | 'StarRating'
   | 'Heading'
   | 'Paragraph'
+  | 'Select'
 
 export type FormBlockType = {
   blockCategory: FormCategoriesType
@@ -76,4 +78,20 @@ export type HandleBlurFunc = (key: string, value: string) => void
 
 export type FormErrorsType = {
   [key: string]: string
+}
+
+export type TForm = {
+  jsonBlocks: string
+  formId: string
+  description: string
+  name: string
+  id: number
+  userId: string
+  views: number
+  responses: number
+  published: boolean
+  creatorName: string
+  createdAt: Date
+  updatedAt: Date
+  settingsId: number | null
 }

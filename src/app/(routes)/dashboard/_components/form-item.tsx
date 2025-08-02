@@ -1,13 +1,7 @@
 'use client'
 
 import { formatDistanceToNowStrict } from 'date-fns'
-import {
-  Activity,
-  EllipsisIcon,
-  Globe,
-  LockKeyholeIcon,
-  MessageSquare,
-} from 'lucide-react'
+import { Activity, Globe, LockKeyholeIcon, MessageSquare } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
 import { Skeleton } from '@/components/ui/skeleton'
@@ -25,9 +19,7 @@ type FormItemProps = {
 }
 
 export function FormItem({
-  description,
   formId,
-  id,
   name,
   views = 0,
   published = false,
