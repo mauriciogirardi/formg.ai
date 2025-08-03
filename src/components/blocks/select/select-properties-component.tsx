@@ -1,15 +1,7 @@
-import { useBuilderStore } from '@/stores/builder-store'
-import {
-  type FormData,
-  propertiesValidateSchema,
-  type NewInstance,
-  type propertiesValidateSchemaType,
-  type SelectPropertiesComponentProps,
-} from './types'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useEffect } from 'react'
+import { FormInput } from '@/components/form-input'
+import { FormSwitch } from '@/components/form-switch'
 import { PropertyName } from '@/components/property-name'
+import { Button } from '@/components/ui/button'
 import {
   Form,
   FormField,
@@ -17,11 +9,19 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form'
-import { FormSwitch } from '@/components/form-switch'
-import { PlusIcon, XIcon } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { FormInput } from '@/components/form-input'
 import { Input } from '@/components/ui/input'
+import { useBuilderStore } from '@/stores/builder-store'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { PlusIcon, XIcon } from 'lucide-react'
+import { useEffect } from 'react'
+import { useForm } from 'react-hook-form'
+import {
+  type FormData,
+  type NewInstance,
+  type SelectPropertiesComponentProps,
+  propertiesValidateSchema,
+  type propertiesValidateSchemaType,
+} from './types'
 
 export function SelectPropertiesComponent({
   blockInstance,

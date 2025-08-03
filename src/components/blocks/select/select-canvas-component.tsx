@@ -1,7 +1,6 @@
 import type { FormBlockInstance } from '@/@types'
-import type { NewInstance } from './types'
-import { FormLabel } from '@/components/form-label'
 import { FormHelperText } from '@/components/form-helper-text'
+import { FormLabel } from '@/components/form-label'
 import {
   Select,
   SelectContent,
@@ -9,6 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import type { NewInstance } from './types'
 
 type SelectCanvasComponentProps = {
   blockInstance: FormBlockInstance

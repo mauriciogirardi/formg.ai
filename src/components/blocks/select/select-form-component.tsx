@@ -1,6 +1,9 @@
-import type { AttributesType, SelectFormComponentProps } from './types'
 import { useState } from 'react'
+import type { AttributesType, SelectFormComponentProps } from './types'
 
+import { FormError } from '@/components/form-error'
+import { FormHelperText } from '@/components/form-helper-text'
+import { FormLabel } from '@/components/form-label'
 import {
   Select,
   SelectContent,
@@ -8,11 +11,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { FormError } from '@/components/form-error'
-import { FormHelperText } from '@/components/form-helper-text'
 import { cn } from '@/lib/utils'
 import { validateField } from '@/utils'
-import { FormLabel } from '@/components/form-label'
 
 export function SelectFormComponent({
   blockInstance,

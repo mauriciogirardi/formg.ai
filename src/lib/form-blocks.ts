@@ -3,10 +3,10 @@ import { HeadingBlock } from '@/components/blocks/heading'
 import { RowLayoutBlock } from '@/components/blocks/layouts/row-layout'
 import { ParagraphBlock } from '@/components/blocks/paragraph'
 import { RadioSelectBlock } from '@/components/blocks/radio'
+import { SelectBlock } from '@/components/blocks/select'
 import { StarRatingBlock } from '@/components/blocks/star-rating'
 import { TextFieldBlock } from '@/components/blocks/text-field'
 import { TextAreaBlock } from '@/components/blocks/textarea'
-import { SelectBlock } from '@/components/blocks/select'
 
 export const FormBlocks: FormBlocksType = {
   RowLayout: RowLayoutBlock,

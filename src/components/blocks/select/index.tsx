@@ -1,9 +1,9 @@
 import type { FormBlockType } from '@/@types'
 import { TextSelect } from 'lucide-react'
-import { blockCategory, blockType } from './types'
 import { SelectCanvasComponent } from './select-canvas-component'
 import { SelectFormComponent } from './select-form-component'
 import { SelectPropertiesComponent } from './select-properties-component'
+import { blockCategory, blockType } from './types'
 
 export const SelectBlock: FormBlockType = {
   blockType,

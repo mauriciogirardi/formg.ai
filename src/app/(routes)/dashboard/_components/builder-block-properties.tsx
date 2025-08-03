@@ -3,9 +3,9 @@
 import { FormBlocks } from '@/lib/form-blocks'
 import { useBuilderStore } from '@/stores/builder-store'
 import { MousePointerClick } from 'lucide-react'
+import { FloatingShareButton } from './floating-share-button'
 import { PreviewDialog } from './preview-dialog'
 import PublishFormBtn from './publish-form-button'
-import { FloatingShareButton } from './floating-share-button'
 
 export function BuilderBlockProperties() {
   const selectedBlockLayout = useBuilderStore(
